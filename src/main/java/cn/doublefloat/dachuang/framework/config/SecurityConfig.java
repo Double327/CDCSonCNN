@@ -19,12 +19,6 @@ import org.springframework.security.web.authentication.logout.LogoutSuccessHandl
 @EnableGlobalMethodSecurity(prePostEnabled = true, securedEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
-    private UserDetailsService userDetailsService;
-
-    @Autowired
-    private LogoutSuccessHandler logoutSuccessHandler;
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -36,17 +30,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers().permitAll()
                 .anyRequest().permitAll();
         /*.anyRequest().authenticated();*/
-        http.logout().logoutUrl("/logout").logoutSuccessHandler(logoutSuccessHandler);
     }
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService);
     }
 
     @Bean

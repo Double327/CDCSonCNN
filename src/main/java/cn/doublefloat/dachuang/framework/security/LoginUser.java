@@ -1,5 +1,4 @@
 package cn.doublefloat.dachuang.framework.security;
-import cn.doublefloat.pbms.project.system.domain.User;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -28,14 +27,6 @@ public class LoginUser implements UserDetails {
      */
     private Long expireTime;
 
-    /**
-     * 用户信息
-     */
-    private User user;
-
-    public LoginUser(User user) {
-        this.user = user;
-    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -44,12 +35,12 @@ public class LoginUser implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        return null;
     }
 
     @Override
     public String getUsername() {
-        return user.getUsername();
+        return null;
     }
 
     @Override

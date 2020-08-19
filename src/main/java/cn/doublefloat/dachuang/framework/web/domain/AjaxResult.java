@@ -1,7 +1,7 @@
 package cn.doublefloat.dachuang.framework.web.domain;
 
-import cn.doublefloat.pbms.common.constant.HttpStatus;
-import cn.doublefloat.pbms.common.utils.StringUtils;
+import cn.doublefloat.dachuang.common.constant.HttpStatus;
+import cn.doublefloat.dachuang.common.utils.StringUtils;
 import lombok.Data;
 import lombok.ToString;
 
