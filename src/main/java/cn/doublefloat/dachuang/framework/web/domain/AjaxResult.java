@@ -2,6 +2,8 @@ package cn.doublefloat.dachuang.framework.web.domain;
 
 import cn.doublefloat.dachuang.common.constant.HttpStatus;
 import cn.doublefloat.dachuang.common.utils.StringUtils;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.ToString;
 
@@ -11,8 +13,10 @@ import java.util.HashMap;
  * @author 李广帅
  * @date 2020/7/20 2:21 下午
  */
+
 @Data
 @ToString
+@ApiModel(description = "简单相应数据")
 public class AjaxResult extends HashMap<String, Object> {
 
     private static final long serialVersionUID = 1L;
@@ -20,16 +24,19 @@ public class AjaxResult extends HashMap<String, Object> {
     /**
      * 状态码标识
      */
+    @ApiModelProperty(value = "错误码")
     public static final String CODE_TAG = "code";
 
     /**
      * 消息标识
      */
+    @ApiModelProperty(value = "提示信息")
     public static final String MSG_TAG = "msg";
 
     /**
      * 数据标识
      */
+    @ApiModelProperty(value = "数据")
     public static final String DATA_TAG = "data";
 
     /**

@@ -17,7 +17,7 @@ public class BaseEntity implements Serializable {
     /**
      * 创建人
      */
-    private String createBy;
+    private Long createBy;
 
     /**
      * 创建时间
@@ -27,7 +27,7 @@ public class BaseEntity implements Serializable {
     /**
      * 更新人
      */
-    private String updateBy;
+    private Long updateBy;
 
     /**
      * 更新时间
@@ -37,7 +37,7 @@ public class BaseEntity implements Serializable {
     /**
      * 删除人
      */
-    private String deleteBy;
+    private Long deleteBy;
 
     /**
      * 删除时间
@@ -47,7 +47,7 @@ public class BaseEntity implements Serializable {
     /**
      * 备注
      */
-    private String remark;
+    private String note;
 
     /**
      * 请求参数
@@ -61,5 +61,19 @@ public class BaseEntity implements Serializable {
             params = new HashMap<>();
         }
         return params;
+    }
+
+    @Override
+    public String toString() {
+        return "BaseEntity{" +
+                "createBy=" + createBy +
+                ", createTime=" + createTime +
+                ", updateBy=" + updateBy +
+                ", updateTime=" + updateTime +
+                ", deleteBy=" + deleteBy +
+                ", deleteTime=" + deleteTime +
+                ", note='" + note + '\'' +
+                ", params=" + params +
+                '}';
     }
 }

@@ -1,4 +1,6 @@
 package cn.doublefloat.dachuang.framework.security;
+
+import cn.doublefloat.dachuang.framework.web.domain.BaseUser;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,6 +29,11 @@ public class LoginUser implements UserDetails {
      */
     private Long expireTime;
 
+    /**
+     * 学生、教师、管理员信息
+     */
+    private BaseUser baseUser;
+
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
@@ -35,31 +42,31 @@ public class LoginUser implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return baseUser.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return baseUser.getNo();
     }
 
     @Override
     public boolean isAccountNonExpired() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return true;
+        return false;
     }
 
     @Override
     public boolean isEnabled() {
-        return true;
+        return false;
     }
 }
