@@ -3,6 +3,11 @@ token:
   secret: abcdefghijklmnopqrstuvwxyz
   expireTime: 30
 
+captcha:
+  width: 115
+  height: 40
+  length: 4
+
 server:
   port: 8888
 
@@ -16,9 +21,11 @@ spring:
     driverClassName: com.mysql.cj.jdbc.Driver
     druid:
       # 主库数据源
-      url: jdbc:mysql://localhost:3306/CDCSonCNN?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+      # url: jdbc:mysql://localhost:3306/CDCSonCNN?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
+      url: jdbc:mysql://cdb-2tt4kxl0.bj.tencentcdb.com:10151/CDCSonCNN?useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8&allowPublicKeyRetrieval=true
       username: root
-      password: mysql0327LGSsr
+      # password: mysql0327LGSsr
+      password: 0327LGSsr
       # 初始连接数
       initialSize: 5
       # 最小连接池数量

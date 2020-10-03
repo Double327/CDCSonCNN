@@ -27,21 +27,19 @@ public class TestStudentMapper {
      */
     @Test
     void testAddStudent() {
-        for (int i = 0; i < 100; i++) {
-            Student student = new Student();
-            student.setNo(String.format("180902%03d", i));
-            student.setName("李广帅");
-            student.setCardId("320323200003277016");
-            String password = passwordEncoder.encode(String.format("90%03d", i));
-            System.out.println(password.length());
-            student.setPassword(password);
-            student.setClassId(1L);
-            student.setCreateBy(0L);
-            student.setCreateTime(new Date());
-            Integer integer = studentMapper.addStudent(student);
-            if (integer == 1) {
-                System.out.println("添加成功");
-            }
+        Student student = new Student();
+        student.setNo("18090255");
+        student.setName("李广帅");
+        student.setCardId("320323200003277016");
+        String password = passwordEncoder.encode("18090255");
+        System.out.println(password.length());
+        student.setPassword(password);
+        student.setClassId(1L);
+        student.setCreateBy(0L);
+        student.setCreateTime(new Date());
+        Integer integer = studentMapper.addStudent(student);
+        if (integer == 1) {
+            System.out.println("添加成功");
         }
     }
 
