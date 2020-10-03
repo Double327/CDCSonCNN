@@ -26,10 +26,10 @@ public class Swagger2Config {
 
     private ApiInfo webApiInfo() {
         return new ApiInfoBuilder()
-                .title("失物招领系统API文档")
-                .description("失物招领系统后台API文档")
+                .title("课设项目管理系统API文档")
+                .description("课设项目管理系统后台API文档")
                 .version("1.0")
-                .contact(new Contact("Double", "shop.doublefloat.cn", "203814477@qq.com"))
+                .contact(new Contact("李广帅", "www.doublefloat.cn", "203814477@qq.com"))
                 .build();
     }
 }
