@@ -10,6 +10,7 @@ import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,6 +22,7 @@ import java.util.concurrent.TimeUnit;
  * @author 李广帅
  * @date 2020/7/21 5:57 下午
  */
+@CrossOrigin
 @Slf4j
 @RestController
 @Api(value = "验证码接口")

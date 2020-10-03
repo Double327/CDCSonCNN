@@ -18,6 +18,7 @@ import java.util.List;
  * @author 李广帅
  * @date 2020/9/25 3:33 下午
  */
+@CrossOrigin
 @RestController
 @RequestMapping("/student")
 @Api(tags = "学生接口")
