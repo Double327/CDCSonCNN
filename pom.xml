@@ -94,6 +94,18 @@
             <version>${swagger2.version}</version>
         </dependency>
 
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-annotations</artifactId>
+            <version>1.5.21</version>
+        </dependency>
+        
+        <dependency>
+            <groupId>io.swagger</groupId>
+            <artifactId>swagger-models</artifactId>
+            <version>1.5.21</version>
+        </dependency>
+
         <!-- 阿里JSON解析-->
         <dependency>
             <groupId>com.alibaba</groupId>
