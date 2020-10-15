@@ -2,6 +2,7 @@ package cn.doublefloat.dachuang.project.exception;
 
 import cn.doublefloat.dachuang.common.exception.user.*;
 import cn.doublefloat.dachuang.framework.web.domain.AjaxResult;
+import io.swagger.annotations.Api;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2020/9/27 1:31 下午
  */
 @RestController
+@Api(tags = "异常处理测试")
 public class TestExceptionController {
     @PostMapping("/testException")
     public AjaxResult testException() {

@@ -25,7 +25,7 @@ import java.util.concurrent.TimeUnit;
 @CrossOrigin
 @Slf4j
 @RestController
-@Api(value = "验证码接口")
+@Api(tags = "验证码接口")
 public class CaptchaController {
 
 
