@@ -24,9 +24,15 @@ public class SimHash {
     }
     @Test
     void testSimHashByTxt(){
-        System.out.println(cn.doublefloat.CDCSonCNN.common.
-                utils.code_anlysis.algorithm.simhash.SimHash.
-                getSimHashDistance(TxtUtils.readTxtFile("codes/TestCode1.txt").toString(),
-                        TxtUtils.readTxtFile("codes/TestCode3.txt").toString(),6));
+        for(int i = 1; i <= 5 ;i++) {
+            for(int j = i; j <= 5; j++) {
+                if(i != j) {
+                    System.out.println("codes/TestCode" + i + ".txt 与 codes/TestCode" + j + ".txt 海明距离为: " + cn.doublefloat.CDCSonCNN.common.
+                            utils.code_anlysis.algorithm.simhash.SimHash.
+                            getSimHashDistance(TxtUtils.readTxtFile("codes/TestCode" + i + ".txt").toString(),
+                                    TxtUtils.readTxtFile("codes/TestCode" + j + ".txt").toString(), 3));
+                }
+            }
+        }
     }
 }

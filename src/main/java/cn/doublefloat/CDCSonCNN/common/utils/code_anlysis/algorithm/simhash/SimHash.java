@@ -8,6 +8,7 @@ import java.util.StringTokenizer;
 /**
  * @author 魏荣轩
  * @date 2020/10/16 22:27
+ * 注: 查重过程： SimHash判断海明距离，<=3 进行词法分析生成分析文件，对分析文件进行SimHash判断，<=3 进行CNN查重;
  */
 public class SimHash {
     private String tokens;
