@@ -1,0 +1,90 @@
+body{
+	min-width: 999px;
+
+}
+a:hover{
+	text-decoration: none;
+}
+.main_title{
+	background-color: rgb(128,30,31);
+	height: 80px;
+}
+.main_title .logo{
+	padding-left: 30px;
+	padding-top: 10px;
+	float: left;
+}
+.main_title .logo img{
+	width: 80%;
+}
+.main_title .logo_title{
+	font-size: white;
+	float: left;
+	color: white;
+	font-size: 30px;
+	padding-top: 17px;
+}
+.main_title .user_function{
+	float: right;
+	padding-top: 5px;
+	padding-right: 50px;
+}
+.main_title .user_function .img-circle{
+	cursor: pointer;
+}
+.main_title .user_function .user_icon{
+	position: relative;
+}
+.main_title .user_function .user_icon:hover .function_list{
+	display: block;
+}
+.main_title ul,li{
+	padding: 0;
+	margin: 0;
+	list-style:none;
+}
+.main_title .function_list{
+	width: 100px;
+	border: solid rgb(169,169,169) 1px;
+	border-radius:8px;
+	background-color: white;
+	display: none;
+	position: absolute;
+	left: -20px;
+}
+.main_title .function_list .function{
+	padding: 10px 20px;
+}
+.main_title .function_list .function:hover{
+	background-color: rgb(128,30,31);
+	color: white;
+	cursor: pointer;
+}
+.main_title .function_list .spacer{
+	border: solid rgb(169,169,169) 0.5px;
+	width: 80%;
+	margin-left: 10px;
+}
+
+.main_body .sidebar{
+	float: left;
+	height: 500px;
+	width: 300px;
+}
+.main_body .ng{
+	/* float: left; */
+}
+.main_footer{
+	background-color: rgb(245,245,246);
+	height: 100px;
+	text-align: center;
+}
+.main_footer a{
+	color: black;
+}
+.main_footer a:hover{
+	color: rgb(128,30,31);
+}
+.main_footer .msg1{
+/*	color: rgb(229,229,229);*/
+}

@@ -1,0 +1,50 @@
+<div class="login_background">
+	<div class="login_form">
+		<form action="">
+			<div class="title">
+				<img src="/login/img_login/login_title.png" alt="用户登录">
+			</div>
+			<table>
+				<tr>
+					<td class="msg">学号/身份证</td>
+				</tr>
+				<tr>
+					<td><input type="text" ng-model="user.uuid"></td>
+				</tr>
+				<tr>
+					<td class="msg">
+						<div>
+							<div class="pwd_msg">密码</div>
+							<div class="forget_msg"><a href="">忘记密码？</a></div>
+						</div>
+
+					</td>
+				</tr>
+				<tr>
+					<td><input type="password" ng-model="user.password"></td>
+				</tr>
+				<tr>
+					<td class="msg">验证码</td>
+				</tr>
+				<tr>
+					<td>
+						<input type="text" class="code_input" ng-model="user.code">
+						<img ng-src="{{info.codeImage}}" ng-click="getCode()" class="code_image" title="看不清？点击更换！" alt="加载失败！">
+					</td>
+				</tr>
+				<tr>
+					<td class="msg">用户类型</td>
+				</tr>
+				<tr>
+					<td>
+						<select class="user_type" ng-model="user.type" ng-options="
+						item.id as item.name for item in user_type"></select>
+					</td>
+				</tr>
+				<tr>
+					<td><img src="login/img_login/login_button.png" ng-click="login()" class="login_button" alt="登录"></td>
+				</tr>
+			</table>
+		</form>
+	</div>
+</div>
