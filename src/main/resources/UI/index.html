@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="retrievalSystem"  ng-controller="indexCtrl">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+		  integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<!-- 主页index css-->
+	<link rel="stylesheet" href="index.css">
+	<!-- 登录login css-->
+	<link rel="stylesheet" href="login/login.css">
+	<title ng-bind="info.title"></title>
+</head>
+<body>
+	<!-- 顶部导航栏-->
+	<header class="main_title">
+		<div class="logo"><a href="#!/home" ng-click="gohome()"><img src="/img_index/logo.png"></a></div>
+		<div class="logo_title" ng-bind="info.title"></div>
+		<div class="user_function"> 
+			<span class="user_icon">
+				<img src="img_index/none.png" class="img-circle" title="点击登录"  ng-click="gotoLogin()">
+				<ul class="function_list" ng-if="user.status">
+					<li class="function" ng-click="operation(1)">项目仓库</li>
+					<li class="spacer"></li>
+					<li class="function" ng-click="operation(2)">个人信息</li>
+					<li class="spacer"></li>
+					<li class="function" ng-click="operation(3)">教师功能</li>
+					<li class="spacer"></li>
+					<li class="function" ng-click="operation(4)">网站管理</li>
+					<li class="spacer"></li>
+					<li class="function" ng-click="logout()">退出登录</li>
+				</ul>
+			</span>
+			</div>
+	</header>
+	<!-- 中间 -->
+	<div class="main_body">
+		<!-- 侧边栏 -->
+		<div class="sidebar">sadsad</div>
+		<!-- 路由-->
+		<div class="ng" ng-view></div>
+	</div>
+	
+	<!-- 底部信息栏-->
+	<footer class="main_footer">
+		<div>
+			<span>Power By:</span>
+			<a href="mailto:1350568291@qq.com" title="18智72">@胡轩志</a>
+			<a href="" title="18智72">@李广帅</a>
+			<a href="" title="18美XX">@王梦妮</a>
+			<a href="" title="18智72">@魏荣轩</a>
+		</div>
+		<div><span class="msg1">排名不分先后，仅以姓名英文顺序排序</span></div>
+		<div>
+			<span>Copyright&nbsp;&copy;2020</span>
+		</div>
+	</footer>
+	<!-- 引ng包-->
+	<script src="https://cdn.jsdelivr.net/npm/angular@1.8.0/angular.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/angular-route@1.8.0/angular-route.js"></script>
+	<!-- index主页包-->
+	<script src="index.js"></script>
+	<!-- home页包-->
+	<script src="home/home.js"></script>
+	<!-- login页包-->
+	<script src="login/login.js"></script>
+	<!-- teacher页包 -->
+	<script src="teacher/teacher.js"></script>
+	<!-- projects页包 -->
+	<script src="projects/projects.js"></script>
+	<!-- userinfo页包 -->
+	<script src="userinfo/userinfo.js"></script>
+	<!-- userinfo页包 -->
+	<script src="admin/admin.js"></script>
+</body>
+</html>

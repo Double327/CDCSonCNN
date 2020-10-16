@@ -1,0 +1,10 @@
+<div>
+    <div><h1>获取学生信息</h1></div>
+    <div style="border: 1px;" >
+        <div ng-repeat="item in student" data-id="item.no" >
+            <span ng-bind="item.no"></span>
+            <span ng-bind="item.name"></span>
+        </div>
+    </div>
+    <div><button ng-click="getStudent()">获取学生信息</button></div>
+</div>
