@@ -8,6 +8,6 @@ import org.springframework.context.annotation.Configuration;
  * @date 2020/7/19 10:32 下午
  */
 @Configuration
-@MapperScan("cn/doublefloat/dachuang/project/**/mapper")
+@MapperScan("cn/doublefloat/CDCSonCNN/project/**/mapper")
 public class ApplicationConfig {
 }
