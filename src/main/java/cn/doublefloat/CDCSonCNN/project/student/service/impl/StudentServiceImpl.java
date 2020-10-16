@@ -71,6 +71,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public Student findStudentByNo(String no) {
+        return studentMapper.findStudentByNo(no);
+    }
+
+    @Override
     public List<Student> findStudentList(Student student) {
         return studentMapper.findStudentList(student);
     }

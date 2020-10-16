@@ -43,6 +43,14 @@ public interface StudentService {
     Student findStudentById(Long id);
 
     /**
+     * 根据学号查找学生信息
+     *
+     * @param no 学号
+     * @return 学生信息
+     */
+    Student findStudentByNo(String no);
+
+    /**
      * 条件查询学生列表
      *
      * @param student 查询条件
@@ -73,4 +81,5 @@ public interface StudentService {
      * @return True：存在, False：不存在
      */
     Boolean checkStudentCardId(String cardId);
+
 }

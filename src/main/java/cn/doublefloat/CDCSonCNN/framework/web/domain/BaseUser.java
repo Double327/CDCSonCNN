@@ -9,7 +9,7 @@ import java.util.Date;
  * @date 2020/9/25 2:59 下午
  */
 @Data
-public abstract class BaseUser extends BaseEntity {
+public class BaseUser extends BaseEntity {
 
     /**
      * 编号

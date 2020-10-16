@@ -45,6 +45,14 @@ public interface StudentMapper {
     Student findStudentById(Long id);
 
     /**
+     * 根据学号查询学生信息
+     *
+     * @param no 学号
+     * @return 学生信息
+     */
+    Student findStudentByNo(String no);
+
+    /**
      * 条件查询学生列表
      *
      * @param student 查询条件

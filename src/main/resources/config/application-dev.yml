@@ -1,0 +1,6 @@
+logging:
+  file:
+    name: log/CDCSonCNN-dev.log
+  level:
+    cn.doublefloat.CDCSonCNN: debug
+    org.springframework: warn

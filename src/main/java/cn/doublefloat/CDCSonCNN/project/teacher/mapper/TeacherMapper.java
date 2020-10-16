@@ -1,16 +1,16 @@
-package cn.doublefloat.CDCSonCNN.project.teacher.service;
+package cn.doublefloat.CDCSonCNN.project.teacher.mapper;
 
-import cn.doublefloat.CDCSonCNN.framework.web.domain.BaseUser;
 import cn.doublefloat.CDCSonCNN.project.teacher.domain.Teacher;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 /**
  * @author 李广帅
- * @date 2020/9/25 4:01 下午
+ * @date 2020/10/16 9:04 上午
  */
-public interface TeacherService {
-
+@Repository
+public interface TeacherMapper {
     /**
      * 添加教师信息
      *
@@ -22,10 +22,10 @@ public interface TeacherService {
     /**
      * 删除教师信息
      *
-     * @param id 教师编号
+     * @param teacher 教师信息
      * @return 删除结构
      */
-    Integer deleteTeacher(Long id);
+    Integer deleteTeacher(Teacher teacher);
 
     /**
      * 更新教师信息
@@ -44,14 +44,6 @@ public interface TeacherService {
     Teacher findTeacherById(Long id);
 
     /**
-     * 根据职工号查找用户信息
-     *
-     * @param no 职工号
-     * @return 教师信息
-     */
-    Teacher findTeacherByNo(String no);
-
-    /**
      * 条件查询教师列表
      *
      * @param teacher 查询条件
@@ -60,12 +52,20 @@ public interface TeacherService {
     List<Teacher> findTeacherList(Teacher teacher);
 
     /**
-     * 检查教师学号是否存在
+     * 检查教师是否存在
      *
-     * @param no 学号
+     * @param id ID
+     * @return 结果
+     */
+    Integer checkTeacherExist(Long id);
+
+    /**
+     * 检查教师工号是否存在
+     *
+     * @param no 工号
      * @return True：存在, False：不存在
      */
-    Boolean checkTeacherNo(String no);
+    Integer checkTeacherNoUnique(String no);
 
     /**
      * 检查身份证号是否存在
@@ -73,5 +73,5 @@ public interface TeacherService {
      * @param cardId 身份证号
      * @return True：存在, False：不存在
      */
-    Boolean checkTeacherCardId(String cardId);
+    Integer checkTeacherCardIdUnique(String cardId);
 }

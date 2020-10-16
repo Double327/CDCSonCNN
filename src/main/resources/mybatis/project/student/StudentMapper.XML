@@ -79,6 +79,11 @@
         WHERE s.status = 0 AND s.id = #{id}
     </select>
 
+    <select id="findStudentByNo" parameterType="String" resultMap="StudentResult">
+        <include refid="SelectStudent"/>
+        WHERE s.status = 0 AND s.no = #{no}
+    </select>
+
     <select id="findStudentList" parameterType="Student" resultMap="StudentResult">
         <include refid="SelectStudent"/>
         WHERE s.status != 2
