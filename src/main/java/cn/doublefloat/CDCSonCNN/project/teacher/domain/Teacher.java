@@ -9,11 +9,17 @@ import lombok.ToString;
  * @date 2020/9/25 3:17 下午
  */
 @Data
-@ToString
 public class Teacher extends BaseUser {
 
     /**
      * 学院名称
      */
     private String college;
+
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "college='" + college + '\'' +
+                "} " + super.toString();
+    }
 }
