@@ -19,20 +19,19 @@ public class TestStudentService {
 
     @Test
     public void testAddStudent() {
-        for (int i = 6; i < 100; i++) {
+        for (int i = 1; i < 100; i++) {
             Student student = new Student();
             /*学号*/
-            student.setNo(String.format("18090%3d", i));
-            System.out.println(String.format("18090%3d", i));
+            student.setNo(String.format("18090%03d", i));
             /*姓名*/
-            student.setName("牛生辉");
+            student.setName("Test" + i);
             /*身份证*/
-            student.setCardId("320323200000000000");
+            student.setCardId(String.format("320323200000000%03d", i));
             /*班级ID*/
             student.setClassId(1L);
             /*密码*/
-            student.setPassword("90259");
-//            Integer result = studentService.addStudent(student);
+            student.setPassword(String.format("90%03d", i));
+            Integer result = studentService.addStudent(student);
 //            System.out.println(result);
         }
     }
