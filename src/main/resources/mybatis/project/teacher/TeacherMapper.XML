@@ -3,14 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="cn.doublefloat.CDCSonCNN.project.student.mapper.StudentMapper">
-    <resultMap id="StudentResult" type="Student">
+<mapper namespace="cn.doublefloat.CDCSonCNN.project.teacher.mapper.TeacherMapper">
+    <resultMap id="TeacherResult" type="Teacher">
         <id property="id" column="id"/>
         <result property="no" column="no"/>
         <result property="name" column="name"/>
         <result property="cardId" column="card_id"/>
-        <result property="classId" column="class_id"/>
-        <result property="className" column="class_name"/>
+        <result property="college" column="college"/>
         <result property="birth" column="birth"/>
         <result property="sex" column="sex"/>
         <result property="password" column="password"/>
@@ -25,17 +24,17 @@
         <result property="note" column="note"/>
     </resultMap>
 
-    <insert id="addStudent" parameterType="Student">
-        INSERT INTO tb_student (no, name, card_id, class_id, password, create_by, create_time)
-        VALUE (#{no}, #{name}, #{cardId}, #{classId}, #{password}, #{createBy}, #{createTime})
+    <insert id="addTeacher" parameterType="Teacher">
+        INSERT INTO tb_teacher (no, name, card_id, college, password, create_by, create_time)
+        VALUE (#{no}, #{name}, #{cardId}, #{college}, #{password}, #{createBy}, #{createTime})
     </insert>
 
-    <delete id="deleteStudent" parameterType="Student">
-        UPDATE tb_student SET status = 2, delete_by = #{deleteBy}, delete_time = #{deleteTime} WHERE id = #{id}
+    <delete id="deleteTeacher" parameterType="Teacher">
+        UPDATE tb_teacher SET status = 2, delete_by = #{deleteBy}, delete_time = #{deleteTime} WHERE id = #{id}
     </delete>
 
-    <update id="updateStudent" parameterType="Student">
-        UPDATE tb_student
+    <update id="updateTeacher" parameterType="Teacher">
+        UPDATE tb_teacher
         SET update_by = #{updateBy},
         <if test="no != null and no != ''">
             no = #{no},
@@ -46,8 +45,8 @@
         <if test="cardId != null and cardId != ''">
             card_id = #{cardId},
         </if>
-        <if test="classId != null and classId != ''">
-            class_id = #{classId},
+        <if test="college != null and college != ''">
+            college = #{college},
         </if>
         <if test="birth != null and birth != ''">
             birth = #{birth},
@@ -68,57 +67,56 @@
         WHERE id = #{id}
     </update>
 
-    <sql id="SelectStudent">
-        SELECT s.id, s.no, s.name, s.card_id, s.class_id, c.name as 'class_name', s.birth, s.sex, s.password, s.status, s.last_login_time, s.create_by, s.create_time, s.update_by, s.update_time, s.delete_by, s.delete_time, s.note
-        FROM tb_student s
-        LEFT JOIN tb_class c on s.class_id = c.id
+    <sql id="SelectTeacher">
+        SELECT t.id, t.no, t.name, t.card_id, t.college, t.birth, t.sex, t.password, t.status, t.last_login_time, t.create_by, t.create_time, t.update_by, t.update_time, t.delete_by, t.delete_time, t.note
+        FROM tb_teacher t
     </sql>
 
-    <select id="findStudentById" parameterType="Long" resultMap="StudentResult">
-        <include refid="SelectStudent"/>
-        WHERE s.status = 0 AND s.id = #{id}
+    <select id="findTeacherById" parameterType="Long" resultMap="TeacherResult">
+        <include refid="SelectTeacher"/>
+        WHERE t.status = 0 AND t.id = #{id}
     </select>
 
-    <select id="findStudentByNo" parameterType="String" resultMap="StudentResult">
-        <include refid="SelectStudent"/>
-        WHERE s.status = 0 AND s.no = #{no}
+    <select id="findTeacherByNo" parameterType="String" resultMap="TeacherResult">
+        <include refid="SelectTeacher"/>
+        WHERE t.status = 0 AND t.no = #{no}
     </select>
 
-    <select id="findStudentList" parameterType="Student" resultMap="StudentResult">
-        <include refid="SelectStudent"/>
-        WHERE s.status != 2
+    <select id="findTeacherList" parameterType="Teacher" resultMap="TeacherResult">
+        <include refid="SelectTeacher"/>
+        WHERE t.status != 2
         <if test="id != null and id != ''">
-            AND s.id = #{id}
+            AND t.id = #{id}
         </if>
         <if test="no != null and no != ''">
-            AND s.no = #{no}
+            AND t.no = #{no}
         </if>
         <if test="name != null and name != ''">
-            AND s.name LIKE concat('%', #{name},'%')
+            AND t.name LIKE concat('%', #{name},'%')
         </if>
         <if test="cardId != null and cardId != ''">
-            AND s.card_id = #{cardId}
+            AND t.card_id = #{cardId}
         </if>
-        <if test="classId != null and classId != ''">
-            AND c.id = #{classId}
+        <if test="college != null and college != ''">
+            AND t.college = #{college}
         </if>
         <if test="sex != null and sex != ''">
-            AND sex = #{sex}
+            AND t.sex = #{sex}
         </if>
         <if test="status != null and status != ''">
-            AND status = #{status}
+            AND t.status = #{status}
         </if>
     </select>
 
-    <select id="checkStudentExist" parameterType="Long" resultType="Integer">
-        SELECT count(*) FROM tb_student WHERE id = #{id} AND status != 2
+    <select id="checkTeacherExist" parameterType="Long" resultType="Integer">
+        SELECT count(*) FROM tb_teacher WHERE id = #{id} AND status != 2
     </select>
 
-    <select id="checkStudentNoUnique" parameterType="String" resultType="Integer">
-        SELECT COUNT(*) FROM tb_student WHERE no = #{no} AND status != 2
+    <select id="checkTeacherNoUnique" parameterType="String" resultType="Integer">
+        SELECT COUNT(*) FROM tb_teacher WHERE no = #{no} AND status != 2
     </select>
 
-    <select id="checkStudentCardIdUnique" parameterType="String" resultType="Integer">
-        SELECT count(*) FROM tb_student WHERE card_id = #{cardId} AND status != 2
+    <select id="checkTeacherCardIdUnique" parameterType="String" resultType="Integer">
+        SELECT count(*) FROM tb_teacher WHERE card_id = #{cardId} AND status != 2
     </select>
 </mapper>
