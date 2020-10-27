@@ -69,7 +69,6 @@ public class SimHash {
             }
         }
         this.strSimHash = simHashBuilder.toString();
-        //System.out.println(this.strSimHash + " length " + this.strSimHash.length());
         return fingerprint;
     }
 
