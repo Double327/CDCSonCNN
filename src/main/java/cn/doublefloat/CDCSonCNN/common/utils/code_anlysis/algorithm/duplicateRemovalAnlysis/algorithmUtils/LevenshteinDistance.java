@@ -4,7 +4,7 @@ package cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.duplicateRe
  * @author 魏荣轩
  * @date 2020/10/28 22:27
  */
-public class LD {
+public class LevenshteinDistance {
 
 	  /**  
 	     * 计算矢量距离  

@@ -2,7 +2,7 @@ package cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.duplicateRe
 
 import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.duplicateRemovalAnlysis.abstractCompare.AbstractCompare;
 import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.duplicateRemovalAnlysis.algorithmUtils.DelComments;
-import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.duplicateRemovalAnlysis.algorithmUtils.LD;
+import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.duplicateRemovalAnlysis.algorithmUtils.LevenshteinDistance;
 import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.utils.TxtUtils;
 import java.util.Collections;
 import java.util.HashSet;
@@ -13,7 +13,7 @@ import java.util.HashSet;
  */
 public class CodesCompare extends AbstractCompare {
     private HashSet<String> keyWordSet = new HashSet<String>();
-    private LD ld = new LD();
+    private LevenshteinDistance levenshteinDistance = new LevenshteinDistance();
     public CodesCompare(){
         /**
          * C++关键字
@@ -93,7 +93,7 @@ public class CodesCompare extends AbstractCompare {
                             pos1 = pos2;
                         }
                     }else{
-                        ret.append(delVariables(code.substring(pos1, code.length())));
+                        ret.append(delVariables(code.substring(pos1)));
                         break;
                     }
                 }
@@ -116,7 +116,7 @@ public class CodesCompare extends AbstractCompare {
      */
     @Override
     public double getSimilarity(String code1, String code2) {
-        return 1-ld.ld(code1, code2)*1.0 / Math.max(code1.length(), code2.length());
+        return 1- levenshteinDistance.ld(code1, code2)*1.0 / Math.max(code1.length(), code2.length());
     }
 
     /**
