@@ -1,0 +1,21 @@
+package LeetCode.M10Y20.D8;
+
+
+public class Pro344Easy {
+
+    public static void main(String[] args){
+
+    }
+
+    public static void reverseString(char[] s) {
+        char temp;
+        int indexA = 0, indexB = s.length-1;
+        while(indexA <= indexB){
+            temp = s[indexA];
+            s[indexA] = s[indexB];
+            s[indexB] = temp;
+            indexA++;
+            indexB--;
+        }
+    }
+}

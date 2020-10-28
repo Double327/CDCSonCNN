@@ -1,0 +1,30 @@
+package LeetCode.M9Y20.D27;
+public class Pro200Mid {
+    public static void main(String[] args){
+        int n=20;
+        System.out.println();
+    }
+    public static int numIslands(char[][] grid) {
+        int islandNum = 0;
+        for (int i=0;i<grid.length;i++){
+            for (int j=0;j<grid[0].length;j++){
+                if(grid[i][j]=='1'){
+                    infect(i,j,grid);
+                    islandNum ++;
+                }
+            }
+        }
+        return islandNum;
+    }
+    public static void infect(int i,int j,char[][] grid){
+        if(i < 0 || i >= grid.length ||
+                j < 0 || j >= grid[0].length || grid[i][j] != '1'){
+            return;
+        }
+        grid[i][j]=2;
+        infect(i-1,j,grid);
+        infect(i,j-1,grid);
+        infect(i+1,j,grid);
+        infect(i,j+1,grid);
+    }
+}

@@ -3,10 +3,6 @@ package LeetCode.M10Y20.D14;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * @author 魏荣轩
- * @date 2020/10/14 18:31
- */
 public class Pro1002Easy {
     public static void main(String[] args){
 
