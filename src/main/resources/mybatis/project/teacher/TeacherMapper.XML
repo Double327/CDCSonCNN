@@ -3,7 +3,7 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="cn.doublefloat.CDCSonCNN.project.teacher.mapper.TeacherMapper">
+<mapper namespace="cn.doublefloat.CDCSonCNN.projects.teacher.mapper.TeacherMapper">
     <resultMap id="TeacherResult" type="Teacher">
         <id property="id" column="id"/>
         <result property="no" column="no"/>

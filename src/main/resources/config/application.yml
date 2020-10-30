@@ -70,5 +70,5 @@ spring:
 
 
 mybatis:
-  typeAliasesPackage: cn.doublefloat.CDCSonCNN.project.**.domain
+  typeAliasesPackage: cn.doublefloat.CDCSonCNN.projects.**.domain
   mapperLocations: classpath*:mybatis/**/*Mapper.XML

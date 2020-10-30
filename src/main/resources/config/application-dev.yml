@@ -4,3 +4,7 @@ logging:
   level:
     cn.doublefloat.CDCSonCNN: debug
     org.springframework: warn
+
+
+project:
+  path: /Users/liguangshuai/Desktop/CDCSonCNN/project/
