@@ -1,4 +1,4 @@
-package cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.utils;
+package cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.utils;
 
 import java.util.Collections;
 import java.util.HashSet;

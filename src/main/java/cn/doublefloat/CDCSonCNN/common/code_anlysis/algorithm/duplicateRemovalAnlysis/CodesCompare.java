@@ -1,10 +1,10 @@
-package cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.duplicateRemovalAnlysis;
+package cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.duplicateRemovalAnlysis;
 
-import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.duplicateRemovalAnlysis.abstractCompare.AbstractCompare;
-import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.utils.DelComments;
-import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.duplicateRemovalAnlysis.algorithmUtils.LevenshteinDistance;
-import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.utils.DelVariables;
-import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.utils.TxtFileUtils;
+import cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.duplicateRemovalAnlysis.abstractCompare.AbstractCompare;
+import cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.utils.DelComments;
+import cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.duplicateRemovalAnlysis.algorithmUtils.LevenshteinDistance;
+import cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.utils.DelVariables;
+import cn.doublefloat.CDCSonCNN.common.code_anlysis.utils.TxtFileUtils;
 import java.util.Collections;
 import java.util.HashSet;
 

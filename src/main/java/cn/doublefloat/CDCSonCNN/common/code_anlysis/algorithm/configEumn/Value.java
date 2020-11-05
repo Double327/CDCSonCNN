@@ -1,4 +1,4 @@
-package cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.configEumn;
+package cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.configEumn;
 
 /**
  * @author 魏荣轩

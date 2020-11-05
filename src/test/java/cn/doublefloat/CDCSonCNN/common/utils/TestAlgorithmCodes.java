@@ -1,7 +1,6 @@
 package cn.doublefloat.CDCSonCNN.common.utils;
 
-import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.AlgorithmCodes;
-import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.utils.TxtFileUtils;
+import cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.AlgorithmCodes;
 import org.junit.jupiter.api.Test;
 
 /**

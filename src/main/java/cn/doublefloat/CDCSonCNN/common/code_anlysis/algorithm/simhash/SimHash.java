@@ -1,6 +1,6 @@
-package cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.simhash;
+package cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.simhash;
 
-import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.utils.DelVariables;
+import cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.utils.DelVariables;
 
 import java.math.BigInteger;
 import java.util.ArrayList;

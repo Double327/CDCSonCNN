@@ -1,12 +1,10 @@
-package cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.winnowing;
+package cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.winnowing;
 
-import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.configEumn.Value;
-import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.duplicateRemovalAnlysis.CodesCompare;
-import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.utils.DelVariables;
+import cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.configEumn.Value;
+import cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.utils.DelVariables;
 import com.google.common.base.Splitter;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
-import io.swagger.models.auth.In;
 
 import java.math.BigDecimal;
 import java.nio.charset.Charset;
