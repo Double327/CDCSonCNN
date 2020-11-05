@@ -1,10 +1,8 @@
 package cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.utils;
 
 import cn.doublefloat.CDCSonCNN.common.exception.CustomException;
-import com.sun.deploy.util.SyncFileAccess;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 
@@ -37,10 +35,10 @@ public class TxtUtils {
                 bufferedReader.close();
                 return returnString;
             }else{
-                throw new CustomException("找不到指定的文件:"+filePath);
+                throw new CustomException("Cannot find file:"+filePath);
             }
         } catch (IOException e) {
-            throw new CustomException("读取文件内容出错:"+e.toString());
+            throw new CustomException("Read file error:"+e.toString());
         }
     }
 }

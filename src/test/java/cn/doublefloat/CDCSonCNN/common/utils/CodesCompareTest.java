@@ -1,4 +1,4 @@
-package cn.doublefloat.CDCSonCNN.projects.student.utils;
+package cn.doublefloat.CDCSonCNN.common.utils;
 
 import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.duplicateRemovalAnlysis.CodesCompare;
 import org.junit.jupiter.api.Test;

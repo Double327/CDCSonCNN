@@ -1,4 +1,4 @@
-package cn.doublefloat.CDCSonCNN.projects.student.utils;
+package cn.doublefloat.CDCSonCNN.common.utils;
 
 import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.utils.TxtUtils;
 import org.junit.jupiter.api.Test;
@@ -34,5 +34,16 @@ public class SimHash {
                 }
             }
         }
+    }
+    /**
+     * SimHash算法不适用于大量修改变量名的比较
+     *
+     */
+    @Test
+    void testSimHashByC(){
+        System.out.println("(codes/C/18090241-190824.c) -> (codes/C/18090241-190825.c) SimHash Distance: " + cn.doublefloat.CDCSonCNN.common.
+                utils.code_anlysis.algorithm.simhash.SimHash.
+                getSimHashDistance(TxtUtils.readTxtFile("codes/C/18090241-190825.c").toString(),
+                        TxtUtils.readTxtFile("codes/C/18090241-190824.c").toString(), 3));
     }
 }

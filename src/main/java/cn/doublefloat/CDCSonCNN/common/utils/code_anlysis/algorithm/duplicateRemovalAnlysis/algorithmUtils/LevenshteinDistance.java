@@ -50,7 +50,7 @@ public class LevenshteinDistance {
 	                d[i][j] = min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + temp);   
 	            }   
 	        }   
-	        return d[n][m];   
+	        return d[n][m];
 	    }   
 	    
 	    private int min(int one, int two, int three){
