@@ -1,6 +1,6 @@
 package cn.doublefloat.CDCSonCNN.common.utils;
 
-import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.utils.TxtUtils;
+import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.utils.TxtFileUtils;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -29,8 +29,8 @@ public class SimHash {
                 if(i != j) {
                     System.out.println("(codes/TestCode" + i + ".txt) -> (codes/TestCode" + j + ".txt) SimHash Distance: " + cn.doublefloat.CDCSonCNN.common.
                             utils.code_anlysis.algorithm.simhash.SimHash.
-                            getSimHashDistance(TxtUtils.readTxtFile("codes/TestCode" + i + ".txt").toString(),
-                                    TxtUtils.readTxtFile("codes/TestCode" + j + ".txt").toString(), 3));
+                            getSimHashDistance(TxtFileUtils.readTxtFile("codes/TestCode" + i + ".txt").toString(),
+                                    TxtFileUtils.readTxtFile("codes/TestCode" + j + ".txt").toString(), 3));
                 }
             }
         }
@@ -43,7 +43,7 @@ public class SimHash {
     void testSimHashByC(){
         System.out.println("(codes/C/18090241-190824.c) -> (codes/C/18090241-190825.c) SimHash Distance: " + cn.doublefloat.CDCSonCNN.common.
                 utils.code_anlysis.algorithm.simhash.SimHash.
-                getSimHashDistance(TxtUtils.readTxtFile("codes/C/18090241-190825.c").toString(),
-                        TxtUtils.readTxtFile("codes/C/18090241-190824.c").toString(), 3));
+                getSimHashDistance(TxtFileUtils.readTxtFile("codes/C/18090241-190825.c").toString(),
+                        TxtFileUtils.readTxtFile("codes/C/18090241-190824.c").toString(), 3));
     }
 }

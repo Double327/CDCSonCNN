@@ -1,9 +1,10 @@
 package cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.duplicateRemovalAnlysis;
 
 import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.duplicateRemovalAnlysis.abstractCompare.AbstractCompare;
-import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.duplicateRemovalAnlysis.algorithmUtils.DelComments;
+import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.utils.DelComments;
 import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.duplicateRemovalAnlysis.algorithmUtils.LevenshteinDistance;
-import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.utils.TxtUtils;
+import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.utils.DelVariables;
+import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.utils.TxtFileUtils;
 import java.util.Collections;
 import java.util.HashSet;
 
@@ -26,36 +27,8 @@ public class CodesCompare extends AbstractCompare {
         String[] list = keyWords.split("\\|");
         Collections.addAll(keyWordSet, list);
     }
-    private String delVariables(String code){
-        code = "   "+code+"  ";
-        int pos1 = 0,pos2=0;
-        int len = code.length();
-        boolean isVariables=false;
-        StringBuilder ret = new StringBuilder();
-        while(pos1<len){
-            pos2++;
-            if(isVariables){
-                if("".equals(code.substring(pos2,pos2+2).replaceAll("[0-9a-zA-Z_][^a-zA-Z_]", ""))){
-                    isVariables = false;
-                    String vv = code.substring(pos1,pos2+1);
-                    if(this.keyWordSet.contains(vv)){
-                        ret.append(vv);
-                    }
-                    pos1 = pos2+1;
-                }
-            }else{
-                if("".equals(code.substring(pos2,pos2+2).replaceAll("[^._a-zA-Z][_a-zA-Z]", ""))){
-                    isVariables = true;
-                    ret.append(code, pos1, pos2+1);
-                    pos1 = pos2+1;
-                }
-            }
-            if(pos2 == len-2){
-                break;
-            }
-        }
-        return ret.toString().trim();
-    }
+
+
 
     /**
      * 重写获取预处理代码段方法
@@ -67,7 +40,7 @@ public class CodesCompare extends AbstractCompare {
     public String getPreProcessedCode(String filePath) {
         String code="";
         try{
-            StringBuffer buf = TxtUtils.readTxtFile(filePath);
+            StringBuffer buf = TxtFileUtils.readTxtFile(filePath);
             //删除所有注释
             code = DelComments.delComments(buf.toString());
             int pos1 = 0,pos2 = 0;
@@ -80,7 +53,7 @@ public class CodesCompare extends AbstractCompare {
                     if(pos2<len-1){
                         if("\"".equals(code.substring(pos2, pos2+1)) && !"\\".contentEquals(code.subSequence(pos2-1, pos2))){
                             isString  = false;
-                            ret.append(delVariables(code.substring(pos1, pos2+1)));
+                            ret.append(DelVariables.delVariables(code.substring(pos1, pos2 + 1)));
                             pos1 = pos2+1;
                         }
                     }else{
@@ -90,11 +63,11 @@ public class CodesCompare extends AbstractCompare {
                     if(pos2<len-1){
                         if("\"".equals(code.substring(pos2, pos2+1))){
                             isString  = true;
-                            ret.append(delVariables(code.substring(pos1, pos2)));
+                            ret.append(DelVariables.delVariables(code.substring(pos1, pos2)));
                             pos1 = pos2;
                         }
                     }else{
-                        ret.append(delVariables(code.substring(pos1)));
+                        ret.append(DelVariables.delVariables(code.substring(pos1)));
                         break;
                     }
                 }

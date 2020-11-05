@@ -10,7 +10,7 @@ import java.nio.charset.StandardCharsets;
  * @author 魏荣轩
  * @date 2020/10/16 22:32
  */
-public class TxtUtils {
+public class TxtFileUtils {
     /**
      * 读取TXT文件内容
      *

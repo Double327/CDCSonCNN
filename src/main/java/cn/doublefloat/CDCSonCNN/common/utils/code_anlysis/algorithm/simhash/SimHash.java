@@ -1,5 +1,7 @@
 package cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.simhash;
 
+import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.utils.DelVariables;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -176,8 +178,8 @@ public class SimHash {
      * @return SimHash
      */
     public static int getSimHashDistance(String str1,String str2,int distance){
-        SimHash str1SimHash = new SimHash(str1,64);
-        SimHash str2SimHash = new SimHash(str2,64);
+        SimHash str1SimHash = new SimHash(DelVariables.delVariables(str1),64);
+        SimHash str2SimHash = new SimHash(DelVariables.delVariables(str2),64);
         return str1SimHash.getDistance(str1SimHash.strSimHash,str2SimHash.strSimHash);
     }
 }

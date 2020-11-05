@@ -1,8 +1,14 @@
 package cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.winnowing;
 
+import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.configEumn.Value;
+import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.duplicateRemovalAnlysis.CodesCompare;
+import cn.doublefloat.CDCSonCNN.common.utils.code_anlysis.algorithm.utils.DelVariables;
 import com.google.common.base.Splitter;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
+import io.swagger.models.auth.In;
+
+import java.math.BigDecimal;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,7 +35,7 @@ public class Winnowing {
      * @param minDetectedLength 子串能被监测到的最短长度
      * @param noiseThreshold 噪声阈值，不检测比这个值小的匹配
      */
-    public Winnowing(int minDetectedLength, int noiseThreshold) {
+    private Winnowing(int minDetectedLength, int noiseThreshold) {
         this.minDetectedLength = minDetectedLength;
         if (noiseThreshold > minDetectedLength) {
             throw new IllegalArgumentException("噪声阈值不能大于最小匹配保证阈值！");
@@ -80,7 +86,7 @@ public class Winnowing {
     }
 
     /**
-     * 计算由字符组成的N-Grams的数字指纹. 预处理：所以字母变为小写且去除空格
+     * 计算由字符组成的N-Grams的数字指纹. 预处理：字母变为小写且去除空格 删除变量
      */
     public Set<Integer> winnowUsingCharacters(String text) {
         //预处理
@@ -92,10 +98,10 @@ public class Winnowing {
      * 预处理
      */
     private String pretreatment(String text) {
-        //去除标点符号
-        String textWithoutPunctuation = text.replaceAll( "[\\pP+~$`^=|<>～｀＄＾＋＝｜＜＞￥×]" , "");
-        // 移除空白字符并将大写字母换成小写字母
-        return textWithoutPunctuation.replaceAll("\\s+","").toLowerCase();
+        //去除标点符号String textWithoutPunctuation = text.replaceAll( "[\\pP+~$`^=|<>～｀＄＾＋＝｜＜＞￥×]" , "");
+        // 移除空白字符删除变量并将大写字母换成小写字母
+        text = text.replaceAll("\\s+","").toLowerCase();
+        return DelVariables.delVariables(text);
     }
     /**
      * 计算每个N-Grams（由输入文本中的字符组成）的哈希值，每个N-Grams的大小为minDetectedLength
@@ -139,5 +145,25 @@ public class Winnowing {
         params.put("minDetectedLength", this.minDetectedLength);
         params.put("windowSize", this.windowSize);
         return params;
+    }
+
+    /**
+     * 判断与另一Winnowing Hash的相似度
+     *
+     * @param codeWinnowingSet winnowing hash表
+     * @param otherCodeWinnowingSet 另一个winnowing hash表
+     * @return 几何距离
+     */
+    public double getSimilarity(Set<Integer> codeWinnowingSet,Set<Integer> otherCodeWinnowingSet){
+        double maxLength = Math.max(codeWinnowingSet.size(), otherCodeWinnowingSet.size()),sameCount = 0D;
+        Iterator<Integer> code1Iterator = codeWinnowingSet.iterator(),
+                        code2Iterator = otherCodeWinnowingSet.iterator();
+        while (code1Iterator.hasNext() && code2Iterator.hasNext()){
+            if(code1Iterator.next().equals(code2Iterator.next())){
+                sameCount+=1;
+            }
+        }
+        return new BigDecimal(sameCount/maxLength)
+                .setScale(Value.PERCENTAGE_DECIMAL.getValue(), BigDecimal.ROUND_HALF_UP).doubleValue();
     }
 }
