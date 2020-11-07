@@ -27,8 +27,9 @@ public class TxtFileUtils {
                 reader = new InputStreamReader(readFileStream, StandardCharsets.UTF_8);
                 BufferedReader bufferedReader = new BufferedReader(reader);
                 StringBuffer returnString = new StringBuffer();
-                while(bufferedReader.readLine() != null){
-                    returnString.append(bufferedReader.readLine());
+                String line;
+                while(( line = bufferedReader.readLine() )!= null){
+                    returnString.append(line);
                 }
                 readFileStream.close();
                 reader.close();

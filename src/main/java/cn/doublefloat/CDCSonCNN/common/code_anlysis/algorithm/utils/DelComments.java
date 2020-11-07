@@ -43,8 +43,8 @@ public class DelComments {
         System.arraycopy(target, 0, tmp, 0, start);
         System.arraycopy(target, end + 1, tmp, start, target.length - end - 1);
         return tmp;   
-    }   
-  
+    }
+
     /**  
      * 删除代码中的注释  
      *   

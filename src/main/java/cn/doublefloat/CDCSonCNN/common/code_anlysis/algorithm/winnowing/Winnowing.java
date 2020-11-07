@@ -1,6 +1,7 @@
 package cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.winnowing;
 
 import cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.configEumn.Value;
+import cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.utils.DelComments;
 import cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.utils.DelVariables;
 import com.google.common.base.Splitter;
 import com.google.common.hash.Hasher;
@@ -8,13 +9,7 @@ import com.google.common.hash.Hashing;
 
 import java.math.BigDecimal;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
 
 /**
  * @author 魏荣轩
@@ -97,8 +92,11 @@ public class Winnowing {
      */
     private String pretreatment(String text) {
         //去除标点符号String textWithoutPunctuation = text.replaceAll( "[\\pP+~$`^=|<>～｀＄＾＋＝｜＜＞￥×]" , "");
+        //删除所有注释
+        text = DelComments.delComments(text);
         // 移除空白字符删除变量并将大写字母换成小写字母
         text = text.replaceAll("\\s+","").toLowerCase();
+        //替除所有变量并返回
         return DelVariables.delVariables(text);
     }
     /**
@@ -153,14 +151,11 @@ public class Winnowing {
      * @return 几何距离
      */
     public double getSimilarity(Set<Integer> codeWinnowingSet,Set<Integer> otherCodeWinnowingSet){
-        double maxLength = Math.max(codeWinnowingSet.size(), otherCodeWinnowingSet.size()),sameCount = 0D;
-        Iterator<Integer> code1Iterator = codeWinnowingSet.iterator(),
-                        code2Iterator = otherCodeWinnowingSet.iterator();
-        while (code1Iterator.hasNext() && code2Iterator.hasNext()){
-            if(code1Iterator.next().equals(code2Iterator.next())){
-                sameCount+=1;
-            }
-        }
+        double maxLength = Math.max(codeWinnowingSet.size(), otherCodeWinnowingSet.size());
+        Set<Integer> newCodeWinnowingSet = new HashSet<>();
+        newCodeWinnowingSet.addAll(codeWinnowingSet);
+        newCodeWinnowingSet.retainAll(otherCodeWinnowingSet);
+        int sameCount = newCodeWinnowingSet.size();
         return new BigDecimal(sameCount/maxLength)
                 .setScale(Value.PERCENTAGE_DECIMAL.getValue(), BigDecimal.ROUND_HALF_UP).doubleValue();
     }
