@@ -53,7 +53,7 @@ public class DelComments {
      */  
     public static String delComments(String target) {
         int preType = 0;   
-        int mark = -1, cur = -1, token = -1;   
+        int mark = -1, cur, token = -1;
         // 输入字符串   
         char[] input =  target.toCharArray();
         for (cur = 0; cur < input.length; cur++) {   

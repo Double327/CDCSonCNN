@@ -84,6 +84,7 @@ public class Winnowing {
     public Set<Integer> winnowUsingCharacters(String text) {
         //预处理
         text = pretreatment(text);
+        System.out.println(text);
         List<Integer> nh = getHashesForNGramsOfChars(text);
         return buildFingerprintSet(nh);
     }
