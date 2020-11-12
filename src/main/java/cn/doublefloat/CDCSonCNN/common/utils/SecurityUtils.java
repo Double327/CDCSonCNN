@@ -4,6 +4,7 @@ import cn.doublefloat.CDCSonCNN.common.exception.CustomException;
 import cn.doublefloat.CDCSonCNN.framework.security.LoginUser;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * @author 李广帅
@@ -29,5 +30,13 @@ public class SecurityUtils {
 
     public static boolean isAdmin(Long userId) {
         return userId != null && 1L == userId;
+    }
+
+    public static String encryptPassword(String password) {
+        return new BCryptPasswordEncoder().encode(password);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(encryptPassword("123456"));
     }
 }

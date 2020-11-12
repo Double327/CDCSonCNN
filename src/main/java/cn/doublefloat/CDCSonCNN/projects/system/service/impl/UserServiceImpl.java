@@ -13,6 +13,7 @@ import cn.doublefloat.CDCSonCNN.projects.system.mapper.UserMapper;
 import cn.doublefloat.CDCSonCNN.projects.system.mapper.UserRoleMapper;
 import cn.doublefloat.CDCSonCNN.projects.system.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -33,6 +34,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private TokenService tokenService;
+
+    @Autowired
+    private BCryptPasswordEncoder passwordEncoder;
 
     @Override
     public List<User> selectUserList(User user) {
@@ -98,6 +102,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public int insertUser(User user) {
         // 新增用户信息
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         int rows = userMapper.insertUser(user);
         // 新增用户与角色管理
         insertUserRole(user);
@@ -127,6 +132,7 @@ public class UserServiceImpl implements UserService {
         // 删除用户与角色关联
         userRoleMapper.deleteUserRoleByUserId(userId);
         // 新增用户与角色管理
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         insertUserRole(user);
         return userMapper.updateUser(user);
     }
@@ -154,6 +160,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int resetPwd(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userMapper.updateUser(user);
     }
 

@@ -24,6 +24,9 @@ public class UserDetailServiceImpl implements UserDetailsService {
     @Autowired
     private UserService userService;
 
+    @Autowired
+    private PermissionService permissionService;
+
     @Override
     public UserDetails loadUserByUsername(String no) throws UsernameNotFoundException {
         User user = userService.selectUserByNo(no);
@@ -40,6 +43,6 @@ public class UserDetailServiceImpl implements UserDetailsService {
     }
 
     private UserDetails createLoginUser(User user) {
-        return new LoginUser(user, null);
+        return new LoginUser(user, permissionService.getMenuPermission(user));
     }
 }
