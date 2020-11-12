@@ -35,9 +35,6 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private TokenService tokenService;
 
-    @Autowired
-    private BCryptPasswordEncoder passwordEncoder;
-
     @Override
     public List<User> selectUserList(User user) {
         return userMapper.selectUserList(user);
@@ -102,7 +99,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public int insertUser(User user) {
         // 新增用户信息
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
         int rows = userMapper.insertUser(user);
         // 新增用户与角色管理
         insertUserRole(user);
@@ -132,7 +128,6 @@ public class UserServiceImpl implements UserService {
         // 删除用户与角色关联
         userRoleMapper.deleteUserRoleByUserId(userId);
         // 新增用户与角色管理
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
         insertUserRole(user);
         return userMapper.updateUser(user);
     }
@@ -160,7 +155,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public int resetPwd(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
         return userMapper.updateUser(user);
     }
 
