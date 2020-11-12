@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.doublefloat.CDCSonCNN.projects.code_anlysis.mapper.CodesVectorMapper">
+    <resultMap id="CodesVectorResult" type="CodesVector">
+        <result column="id" property="id"/>
+        <result column="vector" property="vector"/>
+        <result column="update_time" property="date"/>
+    </resultMap>
+
+    <parameterMap id="CodesVectorParameterMap" type="CodesVector">
+        <parameter property="id" resultMap="CodesVectorResult"/>
+        <parameter property="vector" resultMap="CodesVectorResult"/>
+        <parameter property="update_time" resultMap="CodesVectorResult"/>
+    </parameterMap>
+
+    <select id="selectCodesVectorAsDomain" parameterType="string" resultMap="CodesVectorResult">
+        select * form tb_codes_vector where id=#{id};
+    </select>
+
+    <select id="selectCodesVector" parameterType="string" resultType="string">
+        select vector form tb_codes_vector where id=#{id};
+    </select>
+
+    <update id="updateCodesVector" parameterType="int">
+        update tb_codes_vector set vector=#{vector};
+    </update>
+
+    <insert id="insertCodesVector" parameterMap="CodesVectorParameterMap">
+        insert into tb_codes_vector (id,vector,update_time) value (#{id},#{vector},#{update_time});
+    </insert>
+
+    <delete id="deleteCodesVector" parameterType="string">
+        delete from tb_codes_vector where id=#{id};
+    </delete>
+</mapper>
