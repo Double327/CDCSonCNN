@@ -1,6 +1,7 @@
 package cn.doublefloat.CDCSonCNN.projects.system.mapper;
 
 import cn.doublefloat.CDCSonCNN.projects.system.domain.RoleMenu;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
@@ -8,6 +9,7 @@ import java.util.List;
  * @author 李广帅
  * @date 2020/11/12 10:45 上午
  */
+@Repository
 public interface RoleMenuMapper {
     /**
      * 查询菜单使用数量

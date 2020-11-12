@@ -97,6 +97,6 @@ public interface RoleMapper {
      * @param ids 角色ID
      * @return 结果
      */
-    int deleteRoleByIds(@Param("ids") Long[] ids, @Param("username") String username);
+    int deleteRoleByIds(@Param("ids") Long[] ids, @Param("id") Long id);
 
 }
