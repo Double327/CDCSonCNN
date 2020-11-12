@@ -1,11 +1,13 @@
 package cn.doublefloat.CDCSonCNN.projects.code_anlysis.mapper;
 
 import cn.doublefloat.CDCSonCNN.projects.system.domain.code_anlysis.CodesVector;
+import org.springframework.stereotype.Repository;
 
 /**
  * @author 魏荣轩
  * @date 2020/11/12 20:12
  */
+@Repository
 public interface CodesVectorMapper {
 
     /**

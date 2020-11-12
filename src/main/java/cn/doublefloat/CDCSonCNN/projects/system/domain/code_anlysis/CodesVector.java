@@ -1,5 +1,6 @@
 package cn.doublefloat.CDCSonCNN.projects.system.domain.code_anlysis;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.Date;
  * @date 2020/11/12 23:31
  */
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CodesVector {
 
     /**
