@@ -3,6 +3,7 @@ package cn.doublefloat.CDCSonCNN.projects.system.service.impl;
 import cn.doublefloat.CDCSonCNN.common.constant.UserConstants;
 import cn.doublefloat.CDCSonCNN.common.utils.SecurityUtils;
 import cn.doublefloat.CDCSonCNN.common.utils.StringUtils;
+import cn.doublefloat.CDCSonCNN.framework.web.domain.TreeSelect;
 import cn.doublefloat.CDCSonCNN.projects.system.domain.Menu;
 import cn.doublefloat.CDCSonCNN.projects.system.domain.vo.MetaVo;
 import cn.doublefloat.CDCSonCNN.projects.system.domain.vo.RouterVo;
@@ -13,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * @author 李广帅
@@ -96,6 +98,12 @@ public class MenuServiceImpl implements MenuService {
             returnList = menus;
         }
         return returnList;
+    }
+
+    @Override
+    public List<TreeSelect> buildMenuTreeSelect(List<Menu> menus) {
+        List<Menu> menuTrees = buildMenuTree(menus);
+        return menuTrees.stream().map(TreeSelect::new).collect(Collectors.toList());
     }
 
     @Override

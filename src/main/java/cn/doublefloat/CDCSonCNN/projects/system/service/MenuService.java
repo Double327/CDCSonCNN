@@ -1,5 +1,6 @@
 package cn.doublefloat.CDCSonCNN.projects.system.service;
 
+import cn.doublefloat.CDCSonCNN.framework.web.domain.TreeSelect;
 import cn.doublefloat.CDCSonCNN.projects.system.domain.Menu;
 import cn.doublefloat.CDCSonCNN.projects.system.domain.vo.RouterVo;
 import org.springframework.stereotype.Service;
@@ -66,7 +67,7 @@ public interface MenuService {
      * @param menus 菜单列表
      * @return 下拉树结构列表
      */
-    //List<TreeSelect> buildMenuTreeSelect(List<Menu> menus);
+    List<TreeSelect> buildMenuTreeSelect(List<Menu> menus);
 
     /**
      * 根据菜单ID查询信息
