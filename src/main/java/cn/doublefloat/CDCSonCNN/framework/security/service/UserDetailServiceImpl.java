@@ -4,8 +4,8 @@ import cn.doublefloat.CDCSonCNN.common.exception.BaseException;
 import cn.doublefloat.CDCSonCNN.common.utils.StringUtils;
 import cn.doublefloat.CDCSonCNN.framework.security.LoginUser;
 import cn.doublefloat.CDCSonCNN.framework.web.domain.BaseUser;
-import cn.doublefloat.CDCSonCNN.projects.student.service.StudentService;
-import cn.doublefloat.CDCSonCNN.projects.teacher.service.TeacherService;
+import cn.doublefloat.CDCSonCNN.projects.system.domain.User;
+import cn.doublefloat.CDCSonCNN.projects.system.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -22,18 +22,11 @@ import org.springframework.stereotype.Service;
 public class UserDetailServiceImpl implements UserDetailsService {
 
     @Autowired
-    private StudentService studentService;
-
-    @Autowired
-    private TeacherService teacherService;
+    private UserService userService;
 
     @Override
     public UserDetails loadUserByUsername(String no) throws UsernameNotFoundException {
-        BaseUser user = studentService.findStudentByNo(no);
-
-        if (StringUtils.isNull(user)) {
-            //user = teacherService.findTeacherByNo(no);
-        }
+        User user = userService.selectUserByNo(no);
 
         if (StringUtils.isNull(user)) {
             log.info("登录用户：{} 不存在.", no);
@@ -46,7 +39,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
         return createLoginUser(user);
     }
 
-    private UserDetails createLoginUser(BaseUser user) {
+    private UserDetails createLoginUser(User user) {
         return new LoginUser(user, null);
     }
 }

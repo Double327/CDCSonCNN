@@ -1,6 +1,6 @@
 package cn.doublefloat.CDCSonCNN.framework.security;
 
-import cn.doublefloat.CDCSonCNN.framework.web.domain.BaseUser;
+import cn.doublefloat.CDCSonCNN.projects.system.domain.User;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -33,15 +33,15 @@ public class LoginUser implements UserDetails {
     /**
      * 学生、教师、管理员信息
      */
-    private BaseUser baseUser;
+    private User user;
 
     /**
      * 权限
      */
     private Set<String> permissions;
 
-    public LoginUser(BaseUser baseUser, Set<String> permissions) {
-        this.baseUser = baseUser;
+    public LoginUser(User user, Set<String> permissions) {
+        this.user = user;
         this.permissions = permissions;
     }
 
@@ -52,12 +52,12 @@ public class LoginUser implements UserDetails {
 
     @Override
     public String getPassword() {
-        return baseUser.getPassword();
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return baseUser.getNo();
+        return user.getNo();
     }
 
     @Override
