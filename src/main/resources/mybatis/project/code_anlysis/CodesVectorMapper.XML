@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.doublefloat.CDCSonCNN.projects.code_anlysis.mapper.CodesVectorMapper">
+    <resultMap id="CodesVectorResult" type="CodesVector">
+        <result property="id" column="id"/>
+        <result property="vector" column="vector"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <parameterMap id="CodesVectorParameter" type="CodesVector">
+        <parameter property="id" resultMap="CodesVectorResult"/>
+        <parameter property="updateTime" resultMap="CodesVectorResult"/>
+        <parameter property="vector" resultMap="CodesVectorResult"/>
+    </parameterMap>
+
+    <select id="selectCodesVectorAsDomain" resultMap="CodesVectorResult" parameterType="string">
+        select * from tb_codes_vector where id = #{id};
+    </select>
+
+    <select id="selectCodesVector" parameterType="string" resultType="string">
+        select vector from tb_codes_vector where id = #{id};
+    </select>
+
+    <update id="updateCodesVector" parameterMap="CodesVectorParameter">
+        update tb_codes_vector set update_time=#{updateTime} , vector = #{vector} where id = #{id};
+    </update>
+
+    <insert id="insertCodesVector" parameterMap="CodesVectorParameter">
+        insert into tb_codes_vector (id,update_time,vector) values (#{id},#{updateTime},#{vector});
+    </insert>
+</mapper>

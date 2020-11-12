@@ -27,20 +27,18 @@ public interface CodesVectorMapper {
     /**
      * 更新代码向量
      *
-     * @param codesVector 代码向量
-     * @param fileName 文件名
+     * @param codesVector 实体
      * @return 影响条数
      */
-    int updateCodesVector(String codesVector, String fileName);
+    int updateCodesVector(CodesVector codesVector);
 
     /**
      * 插入代码向量
      *
-     * @param codesVector 代码向量
-     * @param fileName 文件名
+     * @param codesVector 实体
      * @return 影响条数
      */
-    int insertCodesVector(String codesVector, String fileName);
+    int insertCodesVector(CodesVector codesVector);
 
     /**
      * 删除代码向量

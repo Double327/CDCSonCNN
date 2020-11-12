@@ -23,5 +23,5 @@ public class CodesVector {
     /**
      * 更新日期
      */
-    private Date update_time;
+    private Date updateTime;
 }
