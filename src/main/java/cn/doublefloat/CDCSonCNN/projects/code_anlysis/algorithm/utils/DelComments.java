@@ -1,4 +1,4 @@
-package cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.utils;
+package cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.utils;
 
 /**
  * @author 魏荣轩

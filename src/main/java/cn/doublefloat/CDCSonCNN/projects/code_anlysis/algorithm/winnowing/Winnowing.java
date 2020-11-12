@@ -1,8 +1,8 @@
-package cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.winnowing;
+package cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.winnowing;
 
-import cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.configEumn.Value;
-import cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.utils.DelComments;
-import cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.utils.DelVariables;
+import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.configEumn.Value;
+import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.utils.DelComments;
+import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.utils.DelVariables;
 import com.google.common.base.Splitter;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
