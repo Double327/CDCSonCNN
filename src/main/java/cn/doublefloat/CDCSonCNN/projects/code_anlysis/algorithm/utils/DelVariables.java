@@ -1,4 +1,4 @@
-package cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.utils;
+package cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.utils;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -9,7 +9,7 @@ import java.util.HashSet;
  */
 public class DelVariables {
     private static HashSet<String> keyWordSet = new HashSet<String>();
-    private static String keyWords = "and|asm|auto|bad_cast|bad_typeid|bool|break|case|catch|char|class|const|const_cast" +
+    private static String keyWords = "this|and|asm|auto|bad_cast|bad_typeid|bool|break|case|catch|char|class|const|const_cast" +
             "|continue|default|delete|do|double|dynamic_cast|else|enum|except|explicit|extern|false|finally|float|for" +
             "|friend|goto|if|inline|int|long|mutable|namespace|new|operator|or|private|protected|public|register|reinterpret_cast" +
             "|return|short|signed|sizeof|static|static_cast|struct|switch|template|this|throw|true|try|type_info|typedef" +

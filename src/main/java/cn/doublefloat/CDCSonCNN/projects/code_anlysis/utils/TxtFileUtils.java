@@ -1,4 +1,4 @@
-package cn.doublefloat.CDCSonCNN.common.code_anlysis.utils;
+package cn.doublefloat.CDCSonCNN.projects.code_anlysis.utils;
 
 import cn.doublefloat.CDCSonCNN.common.exception.CustomException;
 import org.springframework.core.io.ClassPathResource;

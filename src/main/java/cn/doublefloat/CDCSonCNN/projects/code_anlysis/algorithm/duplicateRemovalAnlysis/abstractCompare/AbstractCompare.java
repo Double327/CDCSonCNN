@@ -1,4 +1,4 @@
-package cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.duplicateRemovalAnlysis.abstractCompare;
+package cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.duplicateRemovalAnlysis.abstractCompare;
 
 /**
  * @author 魏荣轩

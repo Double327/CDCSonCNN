@@ -1,13 +1,13 @@
-package cn.doublefloat.CDCSonCNN.common.code_anlysis.algorithm.configEumn;
+package cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.configEumn;
 
 /**
  * @author 魏荣轩
  * @date 2020/11/5 19:16
+ *
  */
 public enum Weight {
     /**
      * 权重分值
-     * simHash需>=1
      */
     SIMHASH_WEIGHT(0.1),
     COMPARE_WEIGHT(0.75),
