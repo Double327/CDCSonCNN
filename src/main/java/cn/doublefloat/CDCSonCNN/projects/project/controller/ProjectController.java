@@ -3,6 +3,7 @@ package cn.doublefloat.CDCSonCNN.projects.project.controller;
 import cn.doublefloat.CDCSonCNN.common.exception.CustomException;
 import cn.doublefloat.CDCSonCNN.common.utils.FileUtils;
 import cn.doublefloat.CDCSonCNN.framework.web.domain.AjaxResult;
+import io.swagger.annotations.Api;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,6 +22,7 @@ import java.io.InputStream;
 @RestController
 @RequestMapping("/project")
 @Slf4j
+@Api(tags = "项目管理接口")
 public class ProjectController {
 
     /**

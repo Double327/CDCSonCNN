@@ -20,7 +20,7 @@ import java.util.Set;
  * @author 李广帅
  * @date 2020/10/16 2:16 下午
  */
-@Api(tags = "用户登录模块")
+@Api(tags = "用户登录接口")
 @RestController
 public class LoginController {
 
