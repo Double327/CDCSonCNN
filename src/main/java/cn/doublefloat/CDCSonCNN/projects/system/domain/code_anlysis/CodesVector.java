@@ -2,7 +2,6 @@ package cn.doublefloat.CDCSonCNN.projects.system.domain.code_anlysis;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
-
 import java.util.Date;
 
 /**

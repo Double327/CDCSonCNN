@@ -6,6 +6,8 @@ import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.duplicateRemoval
 import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.simhash.SimHash;
 import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.winnowing.Winnowing;
 import cn.doublefloat.CDCSonCNN.projects.code_anlysis.utils.TxtFileUtils;
+import cn.doublefloat.CDCSonCNN.projects.system.domain.vo.code_anlysis.SimilarityCodeList;
+
 import java.math.BigDecimal;
 import java.util.Set;
 
@@ -42,5 +44,11 @@ public class AlgorithmCodes {
                 winnowingSimilarity * Weight.WINNOWING_WEIGHT.getWeight() +
                 compareSimilarity * Weight.COMPARE_WEIGHT.getWeight())
                 .setScale(Value.PERCENTAGE_DECIMAL.getValue(), BigDecimal.ROUND_HALF_UP).doubleValue();
+    }
+    public SimilarityCodeList simWinCompareSimilarity(String codeFile){
+        //遍历所有代码文件获取相似度文件集合
+        //do something
+        //预留cnn返回结果生成SimilarityCodeList对象并返回
+        return new SimilarityCodeList();
     }
 }
