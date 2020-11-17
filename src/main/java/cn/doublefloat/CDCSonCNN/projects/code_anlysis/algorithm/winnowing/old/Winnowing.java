@@ -1,16 +1,16 @@
-package cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.winnowing;
+package cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.winnowing.old;
 
+import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.configEumn.Value;
+import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.utils.DelComments;
+import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.utils.DelVariables;
 import com.google.common.base.Splitter;
 import com.google.common.hash.Hasher;
 import com.google.common.hash.Hashing;
+
+import java.math.BigDecimal;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
+import java.util.*;
+
 /**
  * @author 魏荣轩
  * @date 2020/11/5 16:07
@@ -28,7 +28,7 @@ public class Winnowing {
      * @param minDetectedLength 子串能被监测到的最短长度
      * @param noiseThreshold 噪声阈值，不检测比这个值小的匹配
      */
-    public Winnowing(int minDetectedLength, int noiseThreshold) {
+    private Winnowing(int minDetectedLength, int noiseThreshold) {
         this.minDetectedLength = minDetectedLength;
         if (noiseThreshold > minDetectedLength) {
             throw new IllegalArgumentException("噪声阈值不能大于最小匹配保证阈值！");
@@ -36,79 +36,72 @@ public class Winnowing {
         this.windowSize = minDetectedLength - noiseThreshold + 1;
     }
     /**
-     * 用Winnowing(5, 4)初始化
-     * 最优参数
+     * 用Winnowing(8, 4)初始化
      */
     public Winnowing() {
         this(5, 4);
     }
 
-    /** ----计算用空格分割的单词组成的N-Grams的数字指纹---- */
+    /**
+     * 计算用空格分割的单词组成的N-Grams的数字指纹
+     * /
     public Set<Integer> winnowUsingWords(String text) {
         List<Integer> nh = getHashesForNGramsOfWords(text, " ");
         return buildFingerprintSet(nh);
     }
 
     /**
-     *  先使用给定的分隔符对给定文本进行标记，以获取单词列表。
-     *  然后计算每个由单词组成的N-Grams/shingle的哈希值，存入一个列表并返回
+     * 先使用给定的分隔符对给定文本进行标记，以获取单词列表。
+     * 然后计算每个由单词组成的N-Grams/shingle的哈希值，存入一个列表并返回
      *
      * @param text 文本
      * @param delimiter 分隔符
-     * @return N-Grams/shingle
+     * @return N-Grams/shingle的哈希值列表
      */
     private List<Integer> getHashesForNGramsOfWords(String text, String delimiter) {
-        /** 基于分隔符delimiter对文本text进行划分并移除结果中的空格（trimResults方法）和空字符串（omitEmptyStrings方法）*/
+        //基于分隔符delimiter对文本text进行划分并移除结果中的空格（trimResults方法）和空字符串（omitEmptyStrings方法）
         Iterator<String> tok = Splitter.on(delimiter).trimResults()
                 .omitEmptyStrings().split(text).iterator();
-        List<Integer> n_grams = new ArrayList<>();
+        List<Integer> nGrams = new ArrayList<>();
         List<String> list = new ArrayList<>();
         while (tok.hasNext()) {
             list.add(tok.next());
             if (list.size() == this.minDetectedLength) {
-                n_grams.add(getHash(String.join(" ", list)));
+                nGrams.add(getHash(String.join(" ", list)));
                 list.remove(0);
             }
         }
         /* 当tokens比minDetectedLength短 */
-        if (n_grams.isEmpty() && list.size() > 0) {
-            n_grams.add(getHash(String.join(" ", list)));
+        if (nGrams.isEmpty() && list.size() > 0) {
+            nGrams.add(getHash(String.join(" ", list)));
         }
-        return n_grams;
+        return nGrams;
     }
 
     /**
-     * 计算由字符组成的N-Grams的数字指纹. 预处理：所以字母变为小写且去除空格
-     *
-     * @param text 文本
-     * @return 指纹
+     * 计算由字符组成的N-Grams的数字指纹. 预处理：字母变为小写且去除空格 删除变量
      */
     public Set<Integer> winnowUsingCharacters(String text) {
         //预处理
         text = pretreatment(text);
-        System.out.println("预处理后："+text);
+        System.out.println(text);
         List<Integer> nh = getHashesForNGramsOfChars(text);
         return buildFingerprintSet(nh);
     }
-
     /**
-     * 预处理文本
-     *
-     * @param text 文本
-     * @return 处理后的文本信息
+     * 预处理
      */
     private String pretreatment(String text) {
-        //去除标点符号
-        //String textWithoutPunctuation = text.replaceAll( "[\\pP+~$`^=|<>～｀＄＾＋＝｜＜＞￥×]" , "");
-        // 移除空白字符并将大写字母换成小写字母
-        return text.replaceAll("\\s+","").toLowerCase();
+        //去除标点符号String textWithoutPunctuation = text.replaceAll( "[\\pP+~$`^=|<>～｀＄＾＋＝｜＜＞￥×]" , "");
+        //删除所有注释
+        text = DelComments.delComments(text);
+        // 移除空白字符删除变量并将大写字母换成小写字母
+        text = text.replaceAll("\\s+","").toLowerCase();
+        //替除所有变量并返回
+        return DelVariables.delVariables(text);
     }
-
     /**
      * 计算每个N-Grams（由输入文本中的字符组成）的哈希值，每个N-Grams的大小为minDetectedLength
-     *
-     * @param text 文本
-     * @return N-Grams
      */
     private List<Integer> getHashesForNGramsOfChars(String text) {
         List<Integer> hashes = new ArrayList<>();
@@ -149,5 +142,22 @@ public class Winnowing {
         params.put("minDetectedLength", this.minDetectedLength);
         params.put("windowSize", this.windowSize);
         return params;
+    }
+
+    /**
+     * 判断与另一Winnowing Hash的相似度
+     *
+     * @param codeWinnowingSet winnowing hash表
+     * @param otherCodeWinnowingSet 另一个winnowing hash表
+     * @return 几何距离
+     */
+    public double getSimilarity(Set<Integer> codeWinnowingSet,Set<Integer> otherCodeWinnowingSet){
+        double maxLength = Math.max(codeWinnowingSet.size(), otherCodeWinnowingSet.size());
+        Set<Integer> newCodeWinnowingSet = new HashSet<>();
+        newCodeWinnowingSet.addAll(codeWinnowingSet);
+        newCodeWinnowingSet.retainAll(otherCodeWinnowingSet);
+        int sameCount = newCodeWinnowingSet.size();
+        return new BigDecimal(sameCount/maxLength)
+                .setScale(Value.PERCENTAGE_DECIMAL.getValue(), BigDecimal.ROUND_HALF_UP).doubleValue();
     }
 }

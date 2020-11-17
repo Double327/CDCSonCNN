@@ -16,6 +16,7 @@ public class CodesVector {
      * 代码文件名
      */
     private String id;
+
     /**
      * 代码向量
      */

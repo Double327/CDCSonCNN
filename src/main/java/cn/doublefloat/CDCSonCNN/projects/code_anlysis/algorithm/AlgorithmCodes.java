@@ -4,7 +4,7 @@ import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.configEumn.Value
 import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.configEumn.Weight;
 import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.duplicateRemovalAnlysis.CodesCompare;
 import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.simhash.SimHash;
-import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.winnowing.Winnowing;
+import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.winnowing.old.Winnowing;
 import cn.doublefloat.CDCSonCNN.projects.code_anlysis.utils.TxtFileUtils;
 import cn.doublefloat.CDCSonCNN.projects.system.domain.vo.code_anlysis.SimilarityCodeList;
 
