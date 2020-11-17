@@ -21,18 +21,7 @@ public class SimHash {
                         "假设数据是均匀分布，16位的数据，产生的像限为2^16个，则平均每个像限分布的文档数则为2^34/2^16 = 2^(34-16)) ，四个块返回的总结果数为 4* 262144 （大概 100 万）。\n" +
                         "这样，原本需要比较10亿次，经过索引后，大概只需要处理100万次。",3));
     }
-    @Test
-    void testSimHashByTxt(){
-        for(int i = 1; i <= 5 ;i++) {
-            for(int j = i; j <= 5; j++) {
-                if(i != j) {
-                    System.out.println("(codes/TestCode" + i + ".txt) -> (codes/TestCode" + j + ".txt) SimHash Distance: " + cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.simhash.SimHash.
-                            getSimHashDistance(TxtFileUtils.readTxtFile("codes/TestCode" + i + ".txt").toString(),
-                                    TxtFileUtils.readTxtFile("codes/TestCode" + j + ".txt").toString(), 3));
-                }
-            }
-        }
-    }
+
     /**
      * SimHash算法不适用于大量修改变量名的比较
      *
@@ -42,5 +31,6 @@ public class SimHash {
         System.out.println("(codes/C/18090241-190824.c) -> (codes/C/18090241-190825.c) SimHash Distance: " + cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.simhash.SimHash.
                 getSimHashDistance(TxtFileUtils.readTxtFile("codes/C/18090241-190825.c").toString(),
                         TxtFileUtils.readTxtFile("codes/C/18090241-190824.c").toString(), 3));
+        System.out.println();
     }
 }
