@@ -27,7 +27,15 @@ public class DockerClientConfig {
     @Value("${docker.url}")
     private String dockerUrl;
 
-    public static DockerClient getDockerClient(DockerClientDTO dockerClientDTO) {
+    @Value("${docker.port")
+    private String dockerPort;
+
+    @Value("${docker.certsPath}")
+    private String dockerCertsPath;
+
+    @Bean
+    public DockerClient getDockerClient() {
+        DockerClientDTO dockerClientDTO = new DockerClientDTO(dockerUrl, dockerPort, dockerCertsPath);
         // 进行安全认证
         com.github.dockerjava.core.DockerClientConfig config = DefaultDockerClientConfig.createDefaultConfigBuilder()
                 // 服务器ip
