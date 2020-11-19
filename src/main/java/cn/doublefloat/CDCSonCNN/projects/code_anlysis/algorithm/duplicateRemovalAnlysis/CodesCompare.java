@@ -53,7 +53,7 @@ public class CodesCompare extends AbstractCompare {
                     if(pos2<len-1){
                         if("\"".equals(code.substring(pos2, pos2+1)) && !"\\".contentEquals(code.subSequence(pos2-1, pos2))){
                             isString  = false;
-                            ret.append(DelVariables.delVariables(code.substring(pos1, pos2 + 1)));
+                            ret.append(DelVariables.delVariables(code.substring(pos1, pos2 + 1),"",""));
                             pos1 = pos2+1;
                         }
                     }else{
@@ -63,11 +63,11 @@ public class CodesCompare extends AbstractCompare {
                     if(pos2<len-1){
                         if("\"".equals(code.substring(pos2, pos2+1))){
                             isString  = true;
-                            ret.append(DelVariables.delVariables(code.substring(pos1, pos2)));
+                            ret.append(DelVariables.delVariables(code.substring(pos1, pos2),"",""));
                             pos1 = pos2;
                         }
                     }else{
-                        ret.append(DelVariables.delVariables(code.substring(pos1)));
+                        ret.append(DelVariables.delVariables(code.substring(pos1),"",""));
                         break;
                     }
                 }

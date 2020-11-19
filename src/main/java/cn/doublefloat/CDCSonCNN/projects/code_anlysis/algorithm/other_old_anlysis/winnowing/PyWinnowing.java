@@ -1,4 +1,4 @@
-package cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.winnowing;
+package cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.other_old_anlysis.winnowing;
 
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;

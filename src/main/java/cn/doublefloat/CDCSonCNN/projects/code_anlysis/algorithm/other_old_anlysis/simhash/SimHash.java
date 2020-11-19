@@ -1,4 +1,4 @@
-package cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.simhash;
+package cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.other_old_anlysis.simhash;
 
 import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.utils.DelVariables;
 
@@ -186,8 +186,8 @@ public class SimHash {
      * @return SimHash
      */
     public static int getSimHashDistance(String str1,String str2,int distance){
-        SimHash str1SimHash = new SimHash(DelVariables.delVariables(str1),64);
-        SimHash str2SimHash = new SimHash(DelVariables.delVariables(str2),64);
+        SimHash str1SimHash = new SimHash(DelVariables.delVariables(str1,"",""),64);
+        SimHash str2SimHash = new SimHash(DelVariables.delVariables(str2,"",""),64);
         return str1SimHash.getDistance(str1SimHash.strSimHash,str2SimHash.strSimHash);
     }
 }

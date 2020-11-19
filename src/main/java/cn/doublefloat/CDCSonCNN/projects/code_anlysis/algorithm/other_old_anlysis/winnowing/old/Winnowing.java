@@ -1,4 +1,4 @@
-package cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.winnowing.old;
+package cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.other_old_anlysis.winnowing.old;
 
 import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.configEumn.Value;
 import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.utils.DelComments;
@@ -98,7 +98,7 @@ public class Winnowing {
         // 移除空白字符删除变量并将大写字母换成小写字母
         text = text.replaceAll("\\s+","").toLowerCase();
         //替除所有变量并返回
-        return DelVariables.delVariables(text);
+        return DelVariables.delVariables(text,"","");
     }
     /**
      * 计算每个N-Grams（由输入文本中的字符组成）的哈希值，每个N-Grams的大小为minDetectedLength

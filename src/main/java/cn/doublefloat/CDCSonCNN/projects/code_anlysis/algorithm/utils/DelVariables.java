@@ -15,7 +15,7 @@ public class DelVariables {
             "|return|short|signed|sizeof|static|static_cast|struct|switch|template|this|throw|true|try|type_info|typedef" +
             "|typeid|typename|union|unsigned|using|virtual|void|volatile|wchar_t|while";
 
-    public static String delVariables(String code){
+    public static String delVariables(String code,String replaceCode0, String replaceCode1){
         String[] list = keyWords.split("\\|");
         Collections.addAll(keyWordSet, list);
         code = "   "+code+"  ";
@@ -30,14 +30,14 @@ public class DelVariables {
                     isVariables = false;
                     String vv = code.substring(pos1,pos2+1);
                     if(keyWordSet.contains(vv)){
-                        ret.append(vv);
+                        ret.append(vv+" "+replaceCode0);
                     }
                     pos1 = pos2+1;
                 }
             }else{
                 if("".equals(code.substring(pos2,pos2+2).replaceAll("[^._a-zA-Z][_a-zA-Z]", ""))){
                     isVariables = true;
-                    ret.append(code, pos1, pos2+1);
+                    ret.append(code+" "+replaceCode1, pos1,pos2+1);
                     pos1 = pos2+1;
                 }
             }
