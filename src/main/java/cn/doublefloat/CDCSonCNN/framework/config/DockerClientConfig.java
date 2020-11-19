@@ -9,8 +9,11 @@ import com.github.dockerjava.core.DockerClientBuilder;
 import com.github.dockerjava.jaxrs.JerseyDockerCmdExecFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Component;
 
+import java.io.IOException;
 import java.nio.file.Paths;
 
 /**
@@ -27,7 +30,17 @@ public class DockerClientConfig {
     @Value("${docker.url}")
     private String dockerUrl;
 
-    public static DockerClient getDockerClient(DockerClientDTO dockerClientDTO) {
+    @Value("${docker.port}")
+    private String dockerPort;
+
+//    @Value("${docker.certsPath}")
+    private String dockerCertsPath;
+
+    @Bean
+    public DockerClient getDockerClient() throws IOException {
+        Resource resource = new ClassPathResource("certs");
+        String path = resource.getFile().getPath();
+        DockerClientDTO dockerClientDTO = new DockerClientDTO(dockerUrl, dockerPort, path);
         // 进行安全认证
         com.github.dockerjava.core.DockerClientConfig config = DefaultDockerClientConfig.createDefaultConfigBuilder()
                 // 服务器ip

@@ -10,4 +10,5 @@ project:
   path: /Users/liguangshuai/Desktop/CDCSonCNN/project/
 
 docker:
-  url: "http://39.107.70.247:2375"
+  url: "39.107.70.247"
+  port: 2375
