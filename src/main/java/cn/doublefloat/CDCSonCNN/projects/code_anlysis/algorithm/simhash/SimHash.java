@@ -75,6 +75,14 @@ public class SimHash {
     }
 
     /**
+     * 获取SimHash 样本
+     * @return SimHash
+     */
+    public BigInteger getIntSimHash(){
+        return simHash();
+    }
+
+    /**
      * 获取哈希值
      *
      * @param source 源字符串
