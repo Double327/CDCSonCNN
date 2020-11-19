@@ -1,4 +1,4 @@
-package cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.winnowing;
+package cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.winnowing.old;
 
 import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.configEumn.Value;
 import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.utils.DelComments;
@@ -39,7 +39,7 @@ public class Winnowing {
      * 用Winnowing(8, 4)初始化
      */
     public Winnowing() {
-        this(8, 4);
+        this(5, 4);
     }
 
     /**

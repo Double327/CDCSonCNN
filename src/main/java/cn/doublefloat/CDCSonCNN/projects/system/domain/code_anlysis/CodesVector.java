@@ -2,7 +2,6 @@ package cn.doublefloat.CDCSonCNN.projects.system.domain.code_anlysis;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
-
 import java.util.Date;
 
 /**
@@ -17,6 +16,7 @@ public class CodesVector {
      * 代码文件名
      */
     private String id;
+
     /**
      * 代码向量
      */
