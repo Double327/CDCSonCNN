@@ -38,6 +38,9 @@ public class CodeVectorTools {
         code = code.replaceAll( "[\\pP+~$`^=|<>～｀＄＾＋＝｜＜＞￥×]" , " ");
         Pattern p = Pattern.compile("\\s+");
         Matcher m = p.matcher(code);
-        return m.replaceAll(" ");
+        String returnStr = m.replaceAll(" ");
+        //将所有循环变种全部替换为for循环
+        returnStr = returnStr.replaceAll("while |foreach ","for ");
+        return returnStr.replaceAll("do "," ");
     }
 }
