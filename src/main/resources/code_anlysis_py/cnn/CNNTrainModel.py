@@ -1,7 +1,12 @@
-
+# python file
+# -*- coding: utf-8 -*-
+# @Time : 2020/11/20 23:49
+# @Author : 魏荣轩
+# @Desc: 模型训练
+# @File : CNNTrainModel.py
+# @Software: PyCharm
 
 import sys
-
 import gensim.models.word2vec as w2v
 
 
@@ -17,4 +22,4 @@ def train_model(model_file_name, train_word):
 if __name__ == '__main__':
     model_file = sys.argv[1].split(":")[0]
     sentences_file = sys.argv[1].split(":")[1]
-    train_model(model_file, sentences_file)
+    train_model('java_model.model', '语料.txt')

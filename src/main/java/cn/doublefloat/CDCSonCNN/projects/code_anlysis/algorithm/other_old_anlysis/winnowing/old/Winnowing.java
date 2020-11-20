@@ -1,6 +1,6 @@
 package cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.other_old_anlysis.winnowing.old;
 
-import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.configEumn.Value;
+import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.other_old_anlysis.configEumn.Value;
 import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.utils.DelComments;
 import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.utils.DelVariables;
 import com.google.common.base.Splitter;

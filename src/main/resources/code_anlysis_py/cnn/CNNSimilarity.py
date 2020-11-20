@@ -1,7 +1,12 @@
-# coding:utf8
+# python file
+# -*- coding: utf-8 -*-
+# @Time : 2020/11/20 23:49
+# @Author : 魏荣轩
+# @Desc: 基于Word2Vec训练词向量,通过cnn实现查重
+# @File : CNNSimilarity.py
+# @Software: PyCharm
 
 import gensim.models.word2vec as w2v
-from jieba import analyse
 
 
 # cnn池化层，采用max-pooling方式实现池化，参数表示输入矩阵

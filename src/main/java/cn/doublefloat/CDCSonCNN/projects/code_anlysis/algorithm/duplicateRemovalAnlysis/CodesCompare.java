@@ -100,7 +100,7 @@ public class CodesCompare extends AbstractCompare {
      * @param codeFile2Path 代码文本2地址
      * @return 相似度百分
      */
-    public static double getCodesSimilarity(String codeFile1Path, String codeFile2Path){
+    public double getCodesSimilarity(String codeFile1Path, String codeFile2Path){
         CodesCompare cmp = new CodesCompare();
         return cmp.getSimilarity(cmp.getPreProcessedCode(codeFile1Path),cmp.getPreProcessedCode(codeFile2Path));
     }

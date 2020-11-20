@@ -20,7 +20,7 @@ class TestWinnowing {
         System.out.println(winnowing.getSimilarity(winnowing.winnowUsingCharacters(TxtFileUtils.readTxtFile("codes/Txt/TestCode1.txt").toString()),
                 winnowing.winnowUsingCharacters(TxtFileUtils.readTxtFile("codes/C/18090241-190825.c").toString())));
         System.out.println("========================================");
-        System.out.println(new BigDecimal(CodesCompare.getCodesSimilarity(
+        System.out.println(new BigDecimal(new CodesCompare().getCodesSimilarity(
                 "codes/Txt/TestCode1.txt", "codes/C/18090241-190825.c"))
                 .setScale(3, BigDecimal.ROUND_HALF_UP).doubleValue());
     }
