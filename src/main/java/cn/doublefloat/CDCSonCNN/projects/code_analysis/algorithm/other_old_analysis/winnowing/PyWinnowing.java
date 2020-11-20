@@ -15,7 +15,7 @@ public class PyWinnowing {
     public static String getPythonWinnowingResult(String code){
         try {
             String exe = "python";
-            Resource resource = new ClassPathResource("code_anlysis_py/Winnowing.py");
+            Resource resource = new ClassPathResource("code_analysis_py/Winnowing.py");
             String command = resource.getFile().getAbsolutePath();
             String[] cmdArr = new String[] { exe, command , code };
             Process process = Runtime.getRuntime().exec(cmdArr);
