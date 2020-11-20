@@ -25,10 +25,10 @@ public class TestUtilTrainText {
         for(File file : files){
             if(file.exists() && file.isFile()){
                 preCodes.append(CodeVectorTools.getCodePretreatmentAsString(
-                        TxtFileUtils.readTxtFile(codePath + "/" + file.getName()).toString())).append("\n");
+                        TxtFileUtils.readTxtFile(codePath + "/" + file.getName()).toString()));
             }
         }
-        FileWriter fileWriter = new FileWriter("D:\\代码\\语料\\语料.txt",true);
+        FileWriter fileWriter = new FileWriter("D:\\代码\\语料\\语料.txt",false);
         fileWriter.write(preCodes.toString().replaceAll("\\?"," "));
         fileWriter.flush();
         fileWriter.close();
