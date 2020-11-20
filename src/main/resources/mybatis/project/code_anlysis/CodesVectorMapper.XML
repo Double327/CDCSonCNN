@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.doublefloat.CDCSonCNN.projects.code_anlysis.mapper.CodesVectorMapper">
+<mapper namespace="cn.doublefloat.CDCSonCNN.projects.code_analysis.mapper.CodesVectorMapper">
     <resultMap id="CodesVectorResult" type="CodesVector">
         <result property="id" column="id"/>
         <result property="vector" column="vector"/>

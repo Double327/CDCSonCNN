@@ -1,8 +1,8 @@
 package cn.doublefloat.CDCSonCNN.common.utils;
 
-import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.AlgorithmCodes;
-import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.utils.DelComments;
-import cn.doublefloat.CDCSonCNN.projects.code_anlysis.utils.TxtFileUtils;
+import cn.doublefloat.CDCSonCNN.projects.code_analysis.algorithm.AlgorithmCodes;
+import cn.doublefloat.CDCSonCNN.projects.code_analysis.algorithm.utils.DelComments;
+import cn.doublefloat.CDCSonCNN.projects.code_analysis.utils.TxtFileUtils;
 import org.junit.jupiter.api.Test;
 
 /**

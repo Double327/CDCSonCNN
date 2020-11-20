@@ -1,9 +1,8 @@
 package cn.doublefloat.CDCSonCNN.common.utils;
 
-import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.cnn.pretreatment.CodeVectorTools;
-import cn.doublefloat.CDCSonCNN.projects.code_anlysis.utils.TxtFileUtils;
+import cn.doublefloat.CDCSonCNN.projects.code_analysis.algorithm.cnn.pretreatment.CodeVectorTools;
+import cn.doublefloat.CDCSonCNN.projects.code_analysis.utils.TxtFileUtils;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.io.TempDir;
 
 /**
  * @author 魏荣轩

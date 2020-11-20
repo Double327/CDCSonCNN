@@ -1,7 +1,7 @@
 package cn.doublefloat.CDCSonCNN.common.utils;
 
-import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.duplicateRemovalAnlysis.CodesCompare;
-import cn.doublefloat.CDCSonCNN.projects.code_anlysis.utils.TxtFileUtils;
+import cn.doublefloat.CDCSonCNN.projects.code_analysis.algorithm.duplicateRemovalAnalysis.CodesCompare;
+import cn.doublefloat.CDCSonCNN.projects.code_analysis.utils.TxtFileUtils;
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 
@@ -12,8 +12,8 @@ import java.math.BigDecimal;
 class TestWinnowing {
     @Test
     void testWinnowing(){
-        cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.other_old_anlysis.winnowing.old.Winnowing winnowing
-                = new cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.other_old_anlysis.winnowing.old.Winnowing();
+        cn.doublefloat.CDCSonCNN.projects.code_analysis.algorithm.other_old_analysis.winnowing.old.Winnowing winnowing
+                = new cn.doublefloat.CDCSonCNN.projects.code_analysis.algorithm.other_old_analysis.winnowing.old.Winnowing();
         CodesCompare cmp = new CodesCompare();
         //System.out.println(winnowing.winnowUsingCharacters(TxtFileUtils.readTxtFile("codes/C/18090241-190822.c").toString()));
         //System.out.println(winnowing.winnowUsingCharacters(TxtFileUtils.readTxtFile("codes/C/18090241-190825.c").toString()));

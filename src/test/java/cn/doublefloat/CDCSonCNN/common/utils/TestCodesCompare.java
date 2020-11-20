@@ -1,7 +1,7 @@
 package cn.doublefloat.CDCSonCNN.common.utils;
 
-import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.other_old_anlysis.configEumn.Value;
-import cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.duplicateRemovalAnlysis.CodesCompare;
+import cn.doublefloat.CDCSonCNN.projects.code_analysis.algorithm.other_old_analysis.configEumn.Value;
+import cn.doublefloat.CDCSonCNN.projects.code_analysis.algorithm.duplicateRemovalAnalysis.CodesCompare;
 import org.junit.jupiter.api.Test;
 import java.math.BigDecimal;
 

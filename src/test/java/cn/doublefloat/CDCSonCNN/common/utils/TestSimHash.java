@@ -1,6 +1,6 @@
 package cn.doublefloat.CDCSonCNN.common.utils;
 
-import cn.doublefloat.CDCSonCNN.projects.code_anlysis.utils.TxtFileUtils;
+import cn.doublefloat.CDCSonCNN.projects.code_analysis.utils.TxtFileUtils;
 import org.junit.jupiter.api.Test;
 
 /**
@@ -11,7 +11,7 @@ public class TestSimHash {
 
     @Test
     void testSimHash(){
-        System.out.println(cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.other_old_anlysis.simhash.SimHash.
+        System.out.println(cn.doublefloat.CDCSonCNN.projects.code_analysis.algorithm.other_old_analysis.simhash.SimHash.
                 getSimHashDistance("这两种方案，要么时间复杂度高，要么空间复杂度复杂，能否有一种方案可以达到时空复杂度的绝佳平衡呢？答案是肯定的：\n" +
                         "\n" +
                         "我们可以把 64 位的二进制simhash签名均分成4块，每块16位。根据鸽巢原理（也称抽屉原理），如果两个签名的海明距离在 3 以内，它们必有一块完全相同。如下图所示：\n" +
@@ -28,7 +28,7 @@ public class TestSimHash {
      */
     @Test
     void testSimHashByC(){
-        System.out.println("(codes/C/18090241-190824.c) -> (codes/C/18090241-190825.c) SimHash Distance: " + cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.other_old_anlysis.simhash.SimHash.
+        System.out.println("(codes/C/18090241-190824.c) -> (codes/C/18090241-190825.c) SimHash Distance: " + cn.doublefloat.CDCSonCNN.projects.code_analysis.algorithm.other_old_analysis.simhash.SimHash.
                 getSimHashDistance(TxtFileUtils.readTxtFile("codes/C/18090241-190825.c").toString(),
                         TxtFileUtils.readTxtFile("codes/C/18090241-190824.c").toString(), 3));
         System.out.println();
