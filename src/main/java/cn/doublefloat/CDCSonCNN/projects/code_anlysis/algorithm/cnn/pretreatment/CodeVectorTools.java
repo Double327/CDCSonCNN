@@ -33,7 +33,9 @@ public class CodeVectorTools {
         //删除注释
         code = DelComments.delComments(code);
         //将所有变量替换为指定字符
-        code = DelVariables.delVariables(code,"VARS","VARS");
+        code = DelVariables.delVariables(code,"vars","vars");
+        //删除所有中文注释
+        code = code.replaceAll("[\u4e00-\u9fa5]"," ");
         //删除所有符号并分词
         code = code.replaceAll( "[\\pP+~$`^=|<>～｀＄＾＋＝｜＜＞￥×]" , " ");
         Pattern p = Pattern.compile("\\s+");

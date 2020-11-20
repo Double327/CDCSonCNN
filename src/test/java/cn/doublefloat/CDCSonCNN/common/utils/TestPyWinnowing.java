@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
  * @author 魏荣轩
  * @date 2020/11/17 23:43
  */
-public class TstPyWinnowing {
+public class TestPyWinnowing {
     @Test
     void testWinnowingPy(){
         String code = TxtFileUtils.readTxtFile("codes/C/18090241-190824.c").toString();

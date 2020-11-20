@@ -1,10 +1,13 @@
 package cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.utils;
 
+import java.util.regex.Pattern;
+
 /**
  * @author 魏荣轩
  * @date 2020/10/28 22:27
  */
 public class DelComments {
+    private static Pattern pattern = Pattern.compile("/\\*.+?\\*/", Pattern.DOTALL);
 	private static final char MARK = '"';
     private static final char SLASH = '/';
     private static final char BACKSLASH = '\\';
@@ -45,12 +48,23 @@ public class DelComments {
         return tmp;   
     }
 
+    /**
+     * 删除代码中的注释
+     *
+     * @param content  开始地址
+     * @return  处理后字符串
+     */
+    public static String delComments(String content) {
+        content.replaceAll("//.+\\r\\n", "");
+        return pattern.matcher(content).replaceAll("");
+    }
+
     /**  
      * 删除代码中的注释  
      *   
      * @param target  开始地址
      * @return  处理后字符串
-     */  
+
     public static String delComments(String target) {
         int preType = 0;   
         int mark = -1, cur, token = -1;
@@ -110,5 +124,5 @@ public class DelComments {
   
         }   
         return new String(input);   
-    }  
+    }  */
 }

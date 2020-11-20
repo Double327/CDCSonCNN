@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  * @author 魏荣轩
  * @date 2020/11/5 16:16
  */
-class Winnowing {
+class TestWinnowing {
     @Test
     void testWinnowing(){
         cn.doublefloat.CDCSonCNN.projects.code_anlysis.algorithm.other_old_anlysis.winnowing.old.Winnowing winnowing

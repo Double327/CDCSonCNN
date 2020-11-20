@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
  * @author 魏荣轩
  * @date 2020/10/16 23:09
  */
-public class SimHash {
+public class TestSimHash {
 
     @Test
     void testSimHash(){

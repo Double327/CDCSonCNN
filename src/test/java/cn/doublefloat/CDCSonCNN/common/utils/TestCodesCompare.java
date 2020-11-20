@@ -9,7 +9,7 @@ import java.math.BigDecimal;
  * @author 魏荣轩
  * @date 2020/10/28 18:12
  */
-class CodesCompareTest {
+class TestCodesCompare {
     @Test
     void textCompare(){
         System.out.println("codes/Txt/TestCode2.cpp 查重 codes/Cpp/TestCode1.cpp 相似度: "+
