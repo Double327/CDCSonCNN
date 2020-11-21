@@ -3,8 +3,10 @@ package cn.doublefloat.CDCSonCNN.projects.code_analysis.service.impl;
 import cn.doublefloat.CDCSonCNN.projects.code_analysis.mapper.CodesVectorMapper;
 import cn.doublefloat.CDCSonCNN.projects.code_analysis.service.CodesVectorService;
 import cn.doublefloat.CDCSonCNN.projects.system.domain.code_anlysis.CodesVector;
-import org.jvnet.hk2.annotations.Service;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.Date;
 
 /**
  * @author 魏荣轩
@@ -24,7 +26,7 @@ public class CodesVectorServiceImpl implements CodesVectorService {
      */
     @Override
     public String selectCodesVector(String codeFile) {
-        return null;
+        return codesVectorMapper.selectCodesVector(codeFile);
     }
 
     /**
@@ -35,18 +37,23 @@ public class CodesVectorServiceImpl implements CodesVectorService {
      */
     @Override
     public CodesVector selectCodesVectorDomain(String codeFile) {
-        return null;
+        return codesVectorMapper.selectCodesVectorAsDomain(codeFile);
     }
 
     /**
      * 更新数据库中的代码向量
      *
-     * @param codesVector 代码向量
+     * @param codeFile 代码文件
+     * @param vector 代码预处理文件
      * @return 更细条数
      */
     @Override
-    public int updateCodesVector(CodesVector codesVector) {
-        return 0;
+    public int updateCodesVector(String codeFile, String vector) {
+        if(codesVectorMapper.selectCodesVector(codeFile) != null) {
+            return codesVectorMapper.updateCodesVector(new CodesVector(codeFile, vector, new Date()));
+        }else {
+            return 0;
+        }
     }
 
     /**
@@ -57,17 +64,26 @@ public class CodesVectorServiceImpl implements CodesVectorService {
      */
     @Override
     public int deleteCodesVector(String codeFile) {
-        return 0;
+        if(codesVectorMapper.selectCodesVector(codeFile) != null) {
+            return codesVectorMapper.deleteCodesVector(codeFile);
+        }else {
+            return 0;
+        }
     }
 
     /**
      * 插入代码向量
      *
-     * @param codesVector 代码向量
+     * @param codeFile 代码
+     * @param vector 代码预处理
      * @return 影响条数
      */
     @Override
-    public int insertCodesVector(CodesVector codesVector) {
-        return 0;
+    public int insertCodesVector(String codeFile, String vector) {
+        if(codesVectorMapper.selectCodesVector(codeFile) == null) {
+            return codesVectorMapper.insertCodesVector(new CodesVector(codeFile, vector, new Date()));
+        }else {
+            return 0;
+        }
     }
 }

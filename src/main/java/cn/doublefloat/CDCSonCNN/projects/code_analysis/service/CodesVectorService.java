@@ -26,10 +26,11 @@ public interface CodesVectorService {
     /**
      * 更新数据库中的代码向量
      *
-     * @param codesVector 代码向量
+     * @param codeFile 代码文件
+     * @param vector 代码预处理文件
      * @return 更细条数
      */
-    int updateCodesVector(CodesVector codesVector);
+    int updateCodesVector(String codeFile, String vector);
 
     /**
      * 删除代码向量
@@ -42,8 +43,9 @@ public interface CodesVectorService {
     /**
      * 插入代码向量
      *
-     * @param codesVector 代码向量
+     * @param codeFile 代码
+     * @param vector 预处理代码段
      * @return 影响条数
      */
-    int insertCodesVector(CodesVector codesVector);
+    int insertCodesVector(String codeFile, String vector);
 }

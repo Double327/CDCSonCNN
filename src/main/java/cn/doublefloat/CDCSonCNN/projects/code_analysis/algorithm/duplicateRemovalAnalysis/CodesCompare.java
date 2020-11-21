@@ -104,4 +104,5 @@ public class CodesCompare extends AbstractCompare {
         CodesCompare cmp = new CodesCompare();
         return cmp.getSimilarity(cmp.getPreProcessedCode(codeFile1Path),cmp.getPreProcessedCode(codeFile2Path));
     }
+
 }

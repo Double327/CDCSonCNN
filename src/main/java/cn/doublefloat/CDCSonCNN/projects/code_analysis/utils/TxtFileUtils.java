@@ -1,6 +1,7 @@
 package cn.doublefloat.CDCSonCNN.projects.code_analysis.utils;
 
 import cn.doublefloat.CDCSonCNN.common.exception.CustomException;
+import cn.doublefloat.CDCSonCNN.projects.code_analysis.algorithm.cnn.pretreatment.CodeVectorTools;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import java.io.*;
@@ -41,5 +42,37 @@ public class TxtFileUtils {
         } catch (IOException e) {
             throw new CustomException("Read file error:"+e.toString());
         }
+    }
+
+    /**
+     * 更新语料
+     *
+     * @param codeListFolder 代码文件夹 as: "codes/JavaFile"
+     * @param saveTrainTxtPath 保存训练文本路径 as: "D:\代码\语料\语料.txt"
+     * @return 是否训练成功
+     */
+    public static boolean buildTrainTxtByCodeList(String codeListFolder , String saveTrainTxtPath){
+        try {
+            Resource resource = new ClassPathResource(codeListFolder);
+            File baseFile = resource.getFile();
+            File[] files = baseFile.listFiles();
+            StringBuilder preCodes = new StringBuilder();
+            assert files != null;
+            for(File file : files){
+                if(file.exists() && file.isFile()){
+                    preCodes.append(CodeVectorTools.getCodePretreatmentAsString(
+                            TxtFileUtils.readTxtFile(codeListFolder + "/" + file.getName()).toString()));
+                }
+            }
+            FileWriter fileWriter = new FileWriter(saveTrainTxtPath,false);
+            fileWriter.write(preCodes.toString().replaceAll("\\?"," "));
+            fileWriter.flush();
+            fileWriter.close();
+            return true;
+        }catch (Exception exception){
+            System.out.println("系统错误:" + exception);
+            return false;
+        }
+
     }
 }

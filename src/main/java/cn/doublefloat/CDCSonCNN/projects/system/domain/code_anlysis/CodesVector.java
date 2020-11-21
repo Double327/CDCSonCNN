@@ -12,6 +12,11 @@ import java.util.Date;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class CodesVector {
 
+    public CodesVector(String id, String vector, Date updateTime){
+        this.id = id;
+        this.updateTime = updateTime;
+        this.vector = vector;
+    }
     /**
      * 代码文件名
      */
