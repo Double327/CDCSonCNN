@@ -20,6 +20,6 @@ public class SimilarityCodeList {
     /**
      * 主文件
      */
-    private String codeFile;
+    private String codeId;
 
 }
