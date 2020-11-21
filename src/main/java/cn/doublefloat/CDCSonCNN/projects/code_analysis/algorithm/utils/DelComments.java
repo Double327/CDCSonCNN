@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
  * @date 2020/10/28 22:27
  */
 public class DelComments {
-    private static Pattern pattern = Pattern.compile("/\\*.+?\\*/", Pattern.DOTALL);
+    private static final Pattern pattern = Pattern.compile("/\\*.+?\\*/", Pattern.DOTALL);
 	private static final char MARK = '"';
     private static final char SLASH = '/';
     private static final char BACKSLASH = '\\';

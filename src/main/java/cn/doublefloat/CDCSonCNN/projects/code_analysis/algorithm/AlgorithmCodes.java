@@ -1,16 +1,7 @@
 package cn.doublefloat.CDCSonCNN.projects.code_analysis.algorithm;
 
 import cn.doublefloat.CDCSonCNN.projects.code_analysis.algorithm.cnn.CNNAnalysis;
-import cn.doublefloat.CDCSonCNN.projects.code_analysis.algorithm.other_old_analysis.configEumn.Value;
-import cn.doublefloat.CDCSonCNN.projects.code_analysis.algorithm.other_old_analysis.configEumn.Weight;
-import cn.doublefloat.CDCSonCNN.projects.code_analysis.algorithm.duplicateRemovalAnalysis.CodesCompare;
-import cn.doublefloat.CDCSonCNN.projects.code_analysis.algorithm.other_old_analysis.simhash.SimHash;
-import cn.doublefloat.CDCSonCNN.projects.code_analysis.algorithm.other_old_analysis.winnowing.old.Winnowing;
-import cn.doublefloat.CDCSonCNN.projects.code_analysis.utils.TxtFileUtils;
 import cn.doublefloat.CDCSonCNN.projects.system.domain.vo.code_anlysis.SimilarityCodeList;
-
-import java.math.BigDecimal;
-import java.util.Set;
 
 /**
  * @author 魏荣轩
