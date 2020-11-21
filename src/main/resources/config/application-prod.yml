@@ -8,3 +8,8 @@ logging:
 
 project:
   save-path: /CDCSonCNN/project
+
+docker:
+  url: "39.107.70.247"
+  port: 2375
+  certsPath: "/CDCSonCNN/certs"

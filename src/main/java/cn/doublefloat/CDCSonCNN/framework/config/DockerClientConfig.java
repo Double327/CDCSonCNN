@@ -33,14 +33,12 @@ public class DockerClientConfig {
     @Value("${docker.port}")
     private String dockerPort;
 
-//    @Value("${docker.certsPath}")
+    @Value("${docker.certsPath}")
     private String dockerCertsPath;
 
     @Bean
     public DockerClient getDockerClient() throws IOException {
-        Resource resource = new ClassPathResource("certs");
-        String path = resource.getFile().getPath();
-        DockerClientDTO dockerClientDTO = new DockerClientDTO(dockerUrl, dockerPort, path);
+        DockerClientDTO dockerClientDTO = new DockerClientDTO(dockerUrl, dockerPort, dockerCertsPath);
         // 进行安全认证
         com.github.dockerjava.core.DockerClientConfig config = DefaultDockerClientConfig.createDefaultConfigBuilder()
                 // 服务器ip
