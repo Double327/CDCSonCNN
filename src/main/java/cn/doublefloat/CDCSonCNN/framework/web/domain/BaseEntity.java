@@ -47,7 +47,7 @@ public class BaseEntity implements Serializable {
     /**
      * 备注
      */
-    private String note;
+    private String remark;
 
     /**
      * 请求参数
@@ -72,7 +72,7 @@ public class BaseEntity implements Serializable {
                 ", updateTime=" + updateTime +
                 ", deleteBy=" + deleteBy +
                 ", deleteTime=" + deleteTime +
-                ", note='" + note + '\'' +
+                ", note='" + remark + '\'' +
                 ", params=" + params +
                 '}';
     }

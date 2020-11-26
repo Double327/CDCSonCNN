@@ -59,6 +59,11 @@ public class User extends BaseEntity implements Serializable {
     private Long classId;
 
     /**
+     * 用户类型
+     */
+    private String type;
+
+    /**
      * 手机号码
      */
     private String phone;

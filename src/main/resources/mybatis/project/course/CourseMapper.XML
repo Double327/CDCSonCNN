@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.doublefloat.CDCSonCNN.projects.course.mapper.CourseMapper">
+
+    <resultMap id="CourseResult" type="Course">
+        <id property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="teacherId" column="teacher_id"/>
+        <result property="teacherName" column="teacher_name"/>
+        <result property="assistantId" column="assistant_id"/>
+        <result property="assistantName" column="assistant_name"/>
+        <result property="classHour" column="class_hour"/>
+        <result property="credits" column="credits"/>
+        <result property="desc" column="desc"/>
+        <result property="createBy" column="create_by"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="updateBy" column="update_by"/>
+        <result property="remark" column="remark"/>
+    </resultMap>
+
+    <sql id="selectCourseVo">
+        SELECT c.id, c.name, c.teacher_id, t.name AS teacher_name, c.assistant_id, a.name AS assistant_name, c.class_hour,  c.credits, c.desc, c.create_by, c.create_time, c.update_by, c.update_time, c.remark
+        FROM tb_course c
+        LEFT JOIN tb_user t ON t.id = c.teacher_id
+        LEFT JOIN tb_user a ON a.id = c.assistant_id
+    </sql>
+
+    <select id="list" parameterType="Course" resultMap="CourseResult">
+        <include refid="selectCourseVo"/>
+        WHERE 1 = 1
+        <if test="name != null and name != ''">
+            AND name LIKE concat('%', #{name}, '%')
+        </if>
+        <if test="teacherId != null and teacherId != ''">
+            AND c.teacher_id = #{teacherId}
+        </if>
+        <if test="assistantId != null and assistantId != ''">
+            AND c.assistant_id = #{assistantId}
+        </if>
+        <if test="classHour != null and classHour != ''">
+            AND c.class_hour = #{classHour}
+        </if>
+        <if test="credits != null and credits != ''">
+            AND c.credits = #{credits}
+        </if>
+    </select>
+
+    <insert id="add" parameterType="Course">
+        INSERT INTO tb_course (
+        <if test="name != null and name != ''">
+            name,
+        </if>
+        <if test="teacherId != null and teacherId != ''">
+            teacher_id,
+        </if>
+        <if test="assistantId != null and assistantId != ''">
+            assistant_id,
+        </if>
+        <if test="classHour != null and classHour != ''">
+            class_hour,
+        </if>
+        <if test="credits != null and credits != ''">
+            credits,
+        </if>
+        <if test="desc != null and desc != ''">
+            desc,
+        </if>
+        create_by,
+        create_time
+        ) VALUES (
+        <if test="name != null and name != ''">
+            #{name},
+        </if>
+        <if test="teacherId != null and teacherId != ''">
+            #{teacherId},
+        </if>
+        <if test="assistantId != null and assistantId != ''">
+            #{assistantId},
+        </if>
+        <if test="classHour != null and classHour != ''">
+            #{classHour},
+        </if>
+        <if test="credits != null and credits != ''">
+            #{credits},
+        </if>
+        <if test="desc != null and desc != ''">
+            #{desc},
+        </if>
+        #{createBy},
+        sysdate()
+        );
+    </insert>
+    <delete id="delete" parameterType="Long">
+        UPDATE tb_course SET status = 3 WHERE id IN
+        <foreach collection="ids" open="(" close=")" separator="," item="id">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
