@@ -1,4 +1,4 @@
-package cn.doublefloat.CDCSonCNN.projects.system.domain.code_anlysis;
+package cn.doublefloat.CDCSonCNN.projects.system.domain.code_analysis;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
@@ -10,9 +10,9 @@ import java.util.Date;
  */
 @Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class CodesVector {
+public class CodesVec {
 
-    public CodesVector(String id, String vector, Date updateTime){
+    public CodesVec(String id, String vector, Date updateTime){
         this.id = id;
         this.updateTime = updateTime;
         this.vector = vector;

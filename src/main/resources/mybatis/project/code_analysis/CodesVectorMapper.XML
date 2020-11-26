@@ -3,13 +3,13 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="cn.doublefloat.CDCSonCNN.projects.code_analysis.mapper.CodesVectorMapper">
-    <resultMap id="CodesVectorResult" type="CodesVector">
+    <resultMap id="CodesVectorResult" type="CodesVec">
         <result property="id" column="id"/>
         <result property="vector" column="vector"/>
         <result property="updateTime" column="update_time"/>
     </resultMap>
 
-    <parameterMap id="CodesVectorParameter" type="CodesVector">
+    <parameterMap id="CodesVectorParameter" type="CodesVec">
         <parameter property="id" resultMap="CodesVectorResult"/>
         <parameter property="updateTime" resultMap="CodesVectorResult"/>
         <parameter property="vector" resultMap="CodesVectorResult"/>

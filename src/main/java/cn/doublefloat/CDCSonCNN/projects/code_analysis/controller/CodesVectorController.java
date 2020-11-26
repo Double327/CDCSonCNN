@@ -1,7 +1,7 @@
 package cn.doublefloat.CDCSonCNN.projects.code_analysis.controller;
 
 import cn.doublefloat.CDCSonCNN.projects.code_analysis.service.CodesVectorService;
-import cn.doublefloat.CDCSonCNN.projects.system.domain.code_anlysis.CodesVector;
+import cn.doublefloat.CDCSonCNN.projects.system.domain.code_analysis.CodesVec;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 
@@ -42,7 +42,7 @@ public class CodesVectorController {
      * @param codeFile 代码文件ID
      * @return 代码向量实体
      */
-    public CodesVector selectCodesVectorByCodeFile(String codeFile){
+    public CodesVec selectCodesVectorByCodeFile(String codeFile){
         return codesVectorService.selectCodesVectorDomain(codeFile);
     }
 

@@ -1,6 +1,6 @@
 package cn.doublefloat.CDCSonCNN.projects.code_analysis.mapper;
 
-import cn.doublefloat.CDCSonCNN.projects.system.domain.code_anlysis.CodesVector;
+import cn.doublefloat.CDCSonCNN.projects.system.domain.code_analysis.CodesVec;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -16,7 +16,7 @@ public interface CodesVectorMapper {
      * @param fileName 文件名
      * @return 实体
      */
-    CodesVector selectCodesVectorAsDomain(String fileName);
+    CodesVec selectCodesVectorAsDomain(String fileName);
 
     /**
      * 获取代码已有向量
@@ -29,18 +29,18 @@ public interface CodesVectorMapper {
     /**
      * 更新代码向量
      *
-     * @param codesVector 实体
+     * @param codesVec 实体
      * @return 影响条数
      */
-    int updateCodesVector(CodesVector codesVector);
+    int updateCodesVector(CodesVec codesVec);
 
     /**
      * 插入代码向量
      *
-     * @param codesVector 实体
+     * @param codesVec 实体
      * @return 影响条数
      */
-    int insertCodesVector(CodesVector codesVector);
+    int insertCodesVector(CodesVec codesVec);
 
     /**
      * 删除代码向量

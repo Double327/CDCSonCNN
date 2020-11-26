@@ -1,6 +1,6 @@
 package cn.doublefloat.CDCSonCNN.projects.code_analysis.service;
 
-import cn.doublefloat.CDCSonCNN.projects.system.domain.code_anlysis.CodesVector;
+import cn.doublefloat.CDCSonCNN.projects.system.domain.code_analysis.CodesVec;
 
 /**
  * @author 魏荣轩
@@ -21,7 +21,7 @@ public interface CodesVectorService {
      * @param codeFile 代码文件标示
      * @return 实体
      */
-    CodesVector selectCodesVectorDomain(String codeFile);
+    CodesVec selectCodesVectorDomain(String codeFile);
 
     /**
      * 更新数据库中的代码向量

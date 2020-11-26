@@ -2,7 +2,7 @@ package cn.doublefloat.CDCSonCNN.projects.code_analysis.service.impl;
 
 import cn.doublefloat.CDCSonCNN.projects.code_analysis.mapper.CodesVectorMapper;
 import cn.doublefloat.CDCSonCNN.projects.code_analysis.service.CodesVectorService;
-import cn.doublefloat.CDCSonCNN.projects.system.domain.code_anlysis.CodesVector;
+import cn.doublefloat.CDCSonCNN.projects.system.domain.code_analysis.CodesVec;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,7 +36,7 @@ public class CodesVectorServiceImpl implements CodesVectorService {
      * @return 实体
      */
     @Override
-    public CodesVector selectCodesVectorDomain(String codeFile) {
+    public CodesVec selectCodesVectorDomain(String codeFile) {
         return codesVectorMapper.selectCodesVectorAsDomain(codeFile);
     }
 
@@ -50,7 +50,7 @@ public class CodesVectorServiceImpl implements CodesVectorService {
     @Override
     public int updateCodesVector(String codeFile, String vector) {
         if(codesVectorMapper.selectCodesVector(codeFile) != null) {
-            return codesVectorMapper.updateCodesVector(new CodesVector(codeFile, vector, new Date()));
+            return codesVectorMapper.updateCodesVector(new CodesVec(codeFile, vector, new Date()));
         }else {
             return 0;
         }
@@ -81,7 +81,7 @@ public class CodesVectorServiceImpl implements CodesVectorService {
     @Override
     public int insertCodesVector(String codeFile, String vector) {
         if(codesVectorMapper.selectCodesVector(codeFile) == null) {
-            return codesVectorMapper.insertCodesVector(new CodesVector(codeFile, vector, new Date()));
+            return codesVectorMapper.insertCodesVector(new CodesVec(codeFile, vector, new Date()));
         }else {
             return 0;
         }

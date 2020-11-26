@@ -1,5 +1,6 @@
 package cn.doublefloat.CDCSonCNN.projects.system.domain.vo.code_anlysis;
 
+import cn.doublefloat.CDCSonCNN.projects.system.domain.code_analysis.CodesVec;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 
@@ -16,11 +17,11 @@ public class CodesVector {
     /**
      * 向量反序列化
      *
-     * @param codesVector 代码数据库实体
+     * @param codesVec 代码数据库实体
      *  simHash:xxx|winnowing:xxx
      */
-    public CodesVector(cn.doublefloat.CDCSonCNN.projects.system.domain.code_anlysis.CodesVector codesVector){
-        String vector = codesVector.getVector();
+    public CodesVector(CodesVec codesVec){
+        String vector = codesVec.getVector();
         this.codeId = codeId;
         this.simHash = vector.split("|")[0].replaceAll("simHash:","");
         this.winnowing = vector.split("|")[1].replaceAll("winnowing","");

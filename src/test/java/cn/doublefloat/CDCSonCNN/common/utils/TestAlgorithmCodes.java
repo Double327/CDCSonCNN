@@ -10,12 +10,7 @@ import org.junit.jupiter.api.Test;
  * @date 2020/11/5 22:04
  */
 class TestAlgorithmCodes {
-    @Test
-    void testAlgorithmCodes(){
-        AlgorithmCodes algorithmCodes = new AlgorithmCodes();
-        System.out.println("Similarity: "+(algorithmCodes.simWinCompareSimilarity("codes/C/18090241-190826.c"
-                ,"codes/C/18090241-190821.c")*100) +"%");
-    }
+
 
     @Test
     void testDelComments(){
