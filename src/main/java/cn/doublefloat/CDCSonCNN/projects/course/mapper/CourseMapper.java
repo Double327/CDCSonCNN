@@ -13,12 +13,20 @@ import java.util.List;
 public interface CourseMapper {
 
     /**
+     * 根据ID查找课程
+     *
+     * @param id ID
+     * @return 课程信息
+     */
+    public Course findCourseById(Long id);
+
+    /**
      * 获取课程列表
      *
      * @param course 查询条件
      * @return 课程信息
      */
-    public List<Course> list(Course course);
+    public List<Course> findCourseList(Course course);
 
     /**
      * 添加课程信息
@@ -26,7 +34,7 @@ public interface CourseMapper {
      * @param course 课程信息
      * @return 结果
      */
-    public int add(Course course);
+    public int insertCourse(Course course);
 
     /**
      * 删除课程信息
@@ -34,7 +42,7 @@ public interface CourseMapper {
      * @param ids 课程ID
      * @return 结果
      */
-    public int delete(Long[] ids);
+    public int deleteCourseByIds(Long[] ids);
 
     /**
      * 更新课程信息
@@ -42,7 +50,7 @@ public interface CourseMapper {
      * @param course 课程信息
      * @return 结果
      */
-    public int update(Course course);
+    public int updateCourse(Course course);
 
     /**
      * 修改课程状态
