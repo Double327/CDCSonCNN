@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="cn.doublefloat.CDCSonCNN.projects.project.mapper.ProjectMapper">
+
+    <resultMap type="Project" id="ProjectResult">
+        <result property="id" column="id"/>
+        <result property="name" column="name"/>
+        <result property="descriptionription" column="descriptionription"/>
+        <result property="curriculumProjectId" column="curriculum_project_id"/>
+        <result property="studentId" column="student_id"/>
+        <result property="teacherId" column="teacher_id"/>
+        <result property="filePath" column="file_path"/>
+        <result property="commitTimes" column="commit_times"/>
+        <result property="score" column="score"/>
+        <result property="comments" column="comments"/>
+        <result property="opinion" column="opinion"/>
+        <result property="bugs" column="bugs"/>
+    </resultMap>
+
+    <sql id="selectProjectVo">
+        select id, name, description, curriculum_project_id, student_id, teacher_id, file_path, commit_times, score, comments, opinion, bugs from tb_project
+    </sql>
+
+    <select id="selectProjectList" parameterType="Project" resultMap="ProjectResult">
+        <include refid="selectProjectVo"/>
+        <where>
+            <if test="name != null  and name != ''">and name like concat('%', #{name}, '%')</if>
+            <if test="description != null  and description != ''">and desccription = #{description}</if>
+            <if test="curriculumProjectId != null ">and curriculum_project_id = #{curriculumProjectId}</if>
+            <if test="studentId != null ">and student_id = #{studentId}</if>
+            <if test="teacherId != null ">and teacher_id = #{teacherId}</if>
+            <if test="filePath != null  and filePath != ''">and file_path = #{filePath}</if>
+            <if test="commitTimes != null ">and commit_times = #{commitTimes}</if>
+            <if test="score != null ">and score = #{score}</if>
+            <if test="comments != null  and comments != ''">and comments = #{comments}</if>
+            <if test="opinion != null  and opinion != ''">and opinion = #{opinion}</if>
+            <if test="bugs != null  and bugs != ''">and bugs = #{bugs}</if>
+        </where>
+    </select>
+
+    <select id="selectProjectById" parameterType="Long" resultMap="ProjectResult">
+        <include refid="selectProjectVo"/>
+        where id = #{id}
+    </select>
+
+    <insert id="insertProject" parameterType="Project">
+        insert into tb_project
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">id,</if>
+            <if test="name != null">name,</if>
+            <if test="description != null">description,</if>
+            <if test="curriculumProjectId != null">curriculum_project_id,</if>
+            <if test="studentId != null">student_id,</if>
+            <if test="teacherId != null">teacher_id,</if>
+            <if test="filePath != null">file_path,</if>
+            <if test="commitTimes != null">commit_times,</if>
+            <if test="score != null">score,</if>
+            <if test="comments != null">comments,</if>
+            <if test="opinion != null">opinion,</if>
+            <if test="bugs != null">bugs,</if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">#{id},</if>
+            <if test="name != null">#{name},</if>
+            <if test="description != null">#{description},</if>
+            <if test="curriculumProjectId != null">#{curriculumProjectId},</if>
+            <if test="studentId != null">#{studentId},</if>
+            <if test="teacherId != null">#{teacherId},</if>
+            <if test="filePath != null">#{filePath},</if>
+            <if test="commitTimes != null">#{commitTimes},</if>
+            <if test="score != null">#{score},</if>
+            <if test="comments != null">#{comments},</if>
+            <if test="opinion != null">#{opinion},</if>
+            <if test="bugs != null">#{bugs},</if>
+        </trim>
+    </insert>
+
+    <update id="updateProject" parameterType="Project">
+        update tb_project
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="name != null">name = #{name},</if>
+            <if test="description != null">description = #{description},</if>
+            <if test="curriculumProjectId != null">curriculum_project_id = #{curriculumProjectId},</if>
+            <if test="studentId != null">student_id = #{studentId},</if>
+            <if test="teacherId != null">teacher_id = #{teacherId},</if>
+            <if test="filePath != null">file_path = #{filePath},</if>
+            <if test="commitTimes != null">commit_times = #{commitTimes},</if>
+            <if test="score != null">score = #{score},</if>
+            <if test="comments != null">comments = #{comments},</if>
+            <if test="opinion != null">opinion = #{opinion},</if>
+            <if test="bugs != null">bugs = #{bugs},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteProjectById" parameterType="Long">
+        delete from tb_project where id = #{id}
+    </delete>
+
+    <delete id="deleteProjectByIds" parameterType="String">
+        UPDATE tb_project SET status = 2 WHERE id IN
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
