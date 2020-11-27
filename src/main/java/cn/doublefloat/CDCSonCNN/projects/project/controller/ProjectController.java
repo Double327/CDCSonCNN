@@ -40,7 +40,7 @@ public class ProjectController extends BaseController {
     private String projectPath;
 
     @PostMapping("/upload")
-    public AjaxResult uploadProject(@RequestParam MultipartFile file, @RequestParam Project project) {
+    public AjaxResult uploadProject(@RequestParam MultipartFile file, @RequestParam Long projectId) {
         try {
             InputStream inputStream = file.getInputStream();
             log.info("文件保存路径:" + projectPath);
