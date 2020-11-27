@@ -5,7 +5,7 @@
 # @Desc: 基于Word2Vec训练词向量,通过cnn实现查重
 # @File : CNNSimilarity.py
 # @Software: PyCharm
-
+import sys
 import gensim.models.word2vec as w2v
 
 
@@ -42,10 +42,10 @@ def get_input_data(input_sen, compare_sen, word_vec_model):
     word_vec_table = []  # 将要返回词向量矩阵
     key_word = input_sen.split(" ")  # 不去除重复值
     # key_word = analyse.extract_tags(input_sen)  # 获取关键词 去除重复值
-    print(key_word)
+    # print(key_word)
     test_word = compare_sen.split(" ")  # 不去除重复值
     #  test_word = analyse.extract_tags(compare_sen)
-    print(test_word)
+    # print(test_word)
     for i in key_word:
         for j in test_word:
             try:
@@ -88,20 +88,23 @@ def pooling_folding(matrix):
     return res
 
 
-if __name__ == '__main__':
-    model_file_name = 'java_model.txt'
+def main(arg):
     sim_dict = {}
-    # 模型训练，生成词向量
-    # sentences = w2v.LineSentence('语料.txt')
-    # model = w2v.Word2Vec(sentences, sg=1, size=100, window=5, min_count=5, negative=3, sample=0.001, hs=1,
-    #                      workers=4, seed=0)
-    # model.save(model_file_name)
-    model = w2v.Word2Vec.load(model_file_name)
-    matrix = get_input_data(
-        ' M920 D27 public vars class vars 136 public vars static vars void vars int vars 20 out println public vars static vars int vars int vars int vars 0 for vars int vars 1 length return vars',
-        ' M920 D27 public vars class vars 136 public vars static vars void vars int var length return vars',
-        model)
+    code1 = arg[0].replace('~', ' ')
+    code2 = arg[1].replace('~', ' ')
+    model = w2v.Word2Vec.load(arg[2])
+    matrix = get_input_data(code1, code2, model)
     sim_res = pooling_folding(matrix)
     sim_score = sum(sim_res) / len(sim_res)
-    sim_dict.update({'M920': sim_score})
+    sim_dict.update({'Similarity': sim_score})
     print(sim_dict)
+
+
+if __name__ == '__main__':
+    args = []
+    print('成功执行!')
+    for i in range(1, len(sys.argv)):
+        args.append(sys.argv[i])
+    main(args)
+    # code1 = 'vars int vars if vars 0 else vars max return vars M920 D25 java2 windows GDIWindowSurfaceData util Arrays public vars class vars 66 public vars'
+    # code2 = 'class vars 53 public vars static vars void vars int vars new vars int vars 2 1 3 4 1 2 1 5 4 out println public vars static vars int vars int'

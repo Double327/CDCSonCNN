@@ -22,4 +22,4 @@ def train_model(model_file_name, train_word):
 if __name__ == '__main__':
     model_file = sys.argv[1].split(":")[0]
     sentences_file = sys.argv[1].split(":")[1]
-    train_model('java_model.model', '语料.txt')
+    train_model('model/java_model.model', '语料.txt')
