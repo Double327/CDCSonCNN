@@ -15,6 +15,11 @@ import java.util.Map;
 public class BaseEntity implements Serializable {
 
     /**
+     * 状态
+     */
+    private String status;
+
+    /**
      * 创建人
      */
     private Long createBy;
@@ -54,10 +59,8 @@ public class BaseEntity implements Serializable {
      */
     private Map<String, Object> params;
 
-    public Map<String, Object> getParams()
-    {
-        if (params == null)
-        {
+    public Map<String, Object> getParams() {
+        if (params == null) {
             params = new HashMap<>();
         }
         return params;

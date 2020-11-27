@@ -11,6 +11,14 @@ import java.util.List;
 public interface CourseService {
 
     /**
+     * 根据ID查找课程信息
+     *
+     * @param id ID
+     * @return 课程信息
+     */
+    Course findCourseById(Long id);
+
+    /**
      * 获取课程列表
      *
      * @param course 查询条件

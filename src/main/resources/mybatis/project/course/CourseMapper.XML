@@ -29,7 +29,12 @@
         LEFT JOIN tb_user a ON a.id = c.assistant_id
     </sql>
 
-    <select id="list" parameterType="Course" resultMap="CourseResult">
+    <select id="findCourseById" parameterType="Long" resultMap="CourseResult">
+        <include refid="selectCourseVo"/>
+        WHERE c.id = #{id}
+    </select>
+
+    <select id="findCourseList" parameterType="Course" resultMap="CourseResult">
         <include refid="selectCourseVo"/>
         WHERE 1 = 1
         <if test="name != null and name != ''">
@@ -49,7 +54,7 @@
         </if>
     </select>
 
-    <insert id="add" parameterType="Course">
+    <insert id="insertCourse" parameterType="Course">
         INSERT INTO tb_course (
         <if test="name != null and name != ''">
             name,
@@ -94,10 +99,39 @@
         sysdate()
         );
     </insert>
-    <delete id="delete" parameterType="Long">
+    <delete id="deleteCourseByIds" parameterType="Long">
         UPDATE tb_course SET status = 3 WHERE id IN
         <foreach collection="ids" open="(" close=")" separator="," item="id">
             #{id}
         </foreach>
     </delete>
+    <update id="updateCourse" parameterType="Course">
+        UPDATE tb_course SET
+        <if test="name != null and name != ''">
+            name = #{name},
+        </if>
+        <if test="teacherId != null and teacherId != ''">
+            teacher_id = #{teacherId},
+        </if>
+        <if test="assistantId != null and assistantId != ''">
+            assistant_id = #{assistantId},
+        </if>
+        <if test="classHour != null and classHour != ''">
+            class_hour = #{classHour},
+        </if>
+        <if test="credits != null and credits != ''">
+            credits = #{credits},
+        </if>
+        <if test="remark != null and remark != ''">
+            remark = #{remark},
+        </if>
+        update_by = #{updateBy},
+        update_time = sysdate()
+
+        WHERE id = #{id}
+    </update>
+
+    <update id="changeStatus" parameterType="Course">
+        UPDATE tb_course SET status = #{status} WHERE id = #{id}
+    </update>
 </mapper>
