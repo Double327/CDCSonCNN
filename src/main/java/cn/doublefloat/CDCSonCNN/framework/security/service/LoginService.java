@@ -47,14 +47,14 @@ public class LoginService {
 
         String captcha = redisCacheService.getCacheObject(captchaKey);
 
-//        // 验证码失效
-//        if (StringUtils.isNull(captcha)) {
-//            throw new CaptchaExpireException();
-//        }
-//        //验证码错误
-//        if (!captcha.equalsIgnoreCase(code)) {
-//            throw new CaptchaErrorException();
-//        }
+        // 验证码失效
+        if (StringUtils.isNull(captcha)) {
+            throw new CaptchaExpireException();
+        }
+        //验证码错误
+        if (!captcha.equalsIgnoreCase(code)) {
+            throw new CaptchaErrorException();
+        }
 
         Authentication authentication = null;
 

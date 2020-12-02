@@ -1,13 +1,13 @@
 logging:
   file:
-    name: log/CDCSonCNN-prod.log
+    name: /CDCNonCNN/log/CDCSonCNN-prod.log
   level:
     cn.doublefloat.CDCSonCNN: warn
     org.springframework: warn
 
 
 project:
-  save-path: /CDCSonCNN/project
+  path: /CDCSonCNN/project
 
 docker:
   url: "39.107.70.247"

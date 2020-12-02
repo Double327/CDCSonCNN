@@ -6,7 +6,9 @@ import cn.doublefloat.CDCSonCNN.framework.security.service.LoginService;
 import cn.doublefloat.CDCSonCNN.framework.security.service.PermissionService;
 import cn.doublefloat.CDCSonCNN.framework.security.service.TokenService;
 import cn.doublefloat.CDCSonCNN.framework.web.domain.AjaxResult;
+import cn.doublefloat.CDCSonCNN.projects.system.domain.Menu;
 import cn.doublefloat.CDCSonCNN.projects.system.domain.User;
+import cn.doublefloat.CDCSonCNN.projects.system.service.MenuService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -26,6 +29,9 @@ public class LoginController {
 
     @Autowired
     private LoginService loginService;
+
+    @Autowired
+    private MenuService menuService;
 
     @Autowired
     private TokenService tokenService;
@@ -60,5 +66,19 @@ public class LoginController {
         ajax.put("roles", roles);
         ajax.put("permissions", permissions);
         return ajax;
+    }
+
+    /**
+     * 获取路由信息
+     *
+     * @return 路由信息
+     */
+    @GetMapping("getRouters")
+    public AjaxResult getRouters() {
+        LoginUser loginUser = tokenService.getLoginUser(ServletUtils.getRequest());
+        // 用户信息
+        User user = loginUser.getUser();
+        List<Menu> menus = menuService.selectMenuTreeByUserId(user.getId());
+        return AjaxResult.success(menuService.buildMenus(menus));
     }
 }
