@@ -4,6 +4,7 @@ import cn.doublefloat.CDCSonCNN.framework.web.domain.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -76,6 +77,7 @@ public class User extends BaseEntity implements Serializable {
     /**
      * 出生日期
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date birth;
 
     /**

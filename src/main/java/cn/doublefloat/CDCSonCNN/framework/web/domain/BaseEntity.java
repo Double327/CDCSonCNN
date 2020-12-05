@@ -1,5 +1,6 @@
 package cn.doublefloat.CDCSonCNN.framework.web.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
@@ -61,8 +62,10 @@ public class BaseEntity implements Serializable {
     /**
      * 请求参数
      */
+    @JsonIgnore
     private Map<String, Object> params;
 
+    @SuppressWarnings("unchecked")
     public Map<String, Object> getParams() {
         if (params == null) {
             params = new HashMap<>();
