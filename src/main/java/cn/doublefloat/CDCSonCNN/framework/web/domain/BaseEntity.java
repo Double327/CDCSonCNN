@@ -1,6 +1,7 @@
 package cn.doublefloat.CDCSonCNN.framework.web.domain;
 
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -27,6 +28,7 @@ public class BaseEntity implements Serializable {
     /**
      * 创建时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date createTime;
 
     /**
@@ -37,6 +39,7 @@ public class BaseEntity implements Serializable {
     /**
      * 更新时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date updateTime;
 
     /**
@@ -47,6 +50,7 @@ public class BaseEntity implements Serializable {
     /**
      * 删除时间
      */
+    @DateTimeFormat(pattern = "yyyy-MM-dd hh:mm:ss")
     private Date deleteTime;
 
     /**

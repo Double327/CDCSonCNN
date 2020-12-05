@@ -125,11 +125,11 @@ public interface UserService {
     /**
      * 重置用户密码
      *
-     * @param no       学工号
+     * @param id       id
      * @param password 密码
      * @return 结果
      */
-    int resetUserPwd(String no, String password);
+    int resetUserPwd(Long id, String password);
 
     /**
      * 通过用户ID删除用户

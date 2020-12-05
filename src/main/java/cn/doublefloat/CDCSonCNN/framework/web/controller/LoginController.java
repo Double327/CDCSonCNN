@@ -42,8 +42,8 @@ public class LoginController {
     @PostMapping("/login")
     @ApiOperation("用户登录")
     public AjaxResult login(String no, String password, String code, String uuid) {
-        String token = loginService.login(no, password, code, uuid);
         AjaxResult success = AjaxResult.success();
+        String token = loginService.login(no, password, code, uuid);
         success.put("token", token);
         return success;
     }

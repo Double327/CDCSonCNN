@@ -42,7 +42,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
         return createLoginUser(user);
     }
 
-    private UserDetails createLoginUser(User user) {
+    public UserDetails createLoginUser(User user) {
         return new LoginUser(user, permissionService.getMenuPermission(user));
     }
 }

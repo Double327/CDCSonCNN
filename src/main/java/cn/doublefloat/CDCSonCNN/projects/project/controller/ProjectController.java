@@ -45,7 +45,6 @@ public class ProjectController extends BaseController {
             InputStream inputStream = file.getInputStream();
             log.info("文件保存路径:" + projectPath);
             log.info("上传文件名:" + file.getOriginalFilename());
-            FileUtils.saveFile((FileInputStream) inputStream, projectPath, file.getOriginalFilename());
         } catch (Exception e) {
             throw new CustomException(e.getMessage());
         }

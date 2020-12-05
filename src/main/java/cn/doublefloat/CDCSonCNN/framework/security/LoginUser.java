@@ -31,6 +31,26 @@ public class LoginUser implements UserDetails {
     private Long expireTime;
 
     /**
+     * 登录IP地址
+     */
+    private String ip;
+
+    /**
+     * 位置
+     */
+    private String location;
+
+    /**
+     * 浏览器
+     */
+    private String browser;
+
+    /**
+     * 操作系统
+     */
+    private String os;
+
+    /**
      * 学生、教师、管理员信息
      */
     private User user;

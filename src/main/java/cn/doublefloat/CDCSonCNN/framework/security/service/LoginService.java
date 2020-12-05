@@ -43,26 +43,28 @@ public class LoginService {
      * @return token
      */
     public String login(String no, String password, String code, String uuid) {
-        String captchaKey = Constants.CAPTCHA_CODE_KEY + uuid;
-
-        String captcha = redisCacheService.getCacheObject(captchaKey);
-
-        // 验证码失效
-        if (StringUtils.isNull(captcha)) {
+        // 验证码redis键值
+        String verifyKey = Constants.CAPTCHA_CODE_KEY + uuid;
+        // 获取验证码
+        String captcha = redisCacheService.getCacheObject(verifyKey);
+        // 删除验证码
+        redisCacheService.deleteObject(verifyKey);
+        // 判断验证码是否非空
+        if (captcha == null) {
+            // 抛出验证码过期异常
             throw new CaptchaExpireException();
         }
-        //验证码错误
-        if (!captcha.equalsIgnoreCase(code)) {
+        // 判断验证码是否正确
+        if (!code.equalsIgnoreCase(captcha)) {
+            // 抛出验证码错误异常
             throw new CaptchaErrorException();
         }
 
         Authentication authentication = null;
 
         try {
-            log.debug("获取authenticationManager");
             authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(no, password));
-            log.debug("结束获取authenticationManager");
         } catch (Exception e) {
             if (e instanceof BadCredentialsException) {
                 throw new UserPasswordNotMatchException();
@@ -72,6 +74,7 @@ public class LoginService {
         }
 
         LoginUser loginUser = (LoginUser) authentication.getPrincipal();
+        // 生成token
         return tokenService.createToken(loginUser);
     }
 }

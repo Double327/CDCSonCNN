@@ -23,8 +23,8 @@ public class TestFileUtils {
         try {
             System.out.println(filePath);
             FileInputStream fileInputStream = new FileInputStream(file);
-            String fileId = FileUtils.saveFile(fileInputStream, filePath, file.getName());
-            System.out.println(fileId);
+//            String fileId = FileUtils.saveFile(fileInputStream, filePath, file.getName());
+//            System.out.println(fileId);
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

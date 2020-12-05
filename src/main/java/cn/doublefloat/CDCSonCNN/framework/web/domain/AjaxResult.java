@@ -1,11 +1,11 @@
 package cn.doublefloat.CDCSonCNN.framework.web.domain;
 
-import cn.doublefloat.CDCSonCNN.common.constant.HttpStatus;
 import cn.doublefloat.CDCSonCNN.common.utils.StringUtils;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.ToString;
+import org.springframework.http.HttpStatus;
 
 import java.util.HashMap;
 
@@ -52,7 +52,7 @@ public class AjaxResult extends HashMap<String, Object> {
      * @param code 状态码
      * @param msg  消息内容
      */
-    public AjaxResult(Integer code, String msg) {
+    public AjaxResult(HttpStatus code, String msg) {
         super.put(CODE_TAG, code);
         super.put(MSG_TAG, msg);
     }
@@ -64,7 +64,7 @@ public class AjaxResult extends HashMap<String, Object> {
      * @param msg  消息内容
      * @param data 数据
      */
-    public AjaxResult(Integer code, String msg, Object data) {
+    public AjaxResult(HttpStatus code, String msg, Object data) {
         super.put(CODE_TAG, code);
         super.put(MSG_TAG, msg);
         if (StringUtils.isNotNull(data)) {
@@ -109,7 +109,7 @@ public class AjaxResult extends HashMap<String, Object> {
      * @return 成功消息
      */
     public static AjaxResult success(String msg, Object data) {
-        return new AjaxResult(HttpStatus.SUCCESS, msg, data);
+        return new AjaxResult(HttpStatus.OK, msg, data);
     }
 
     /**
@@ -139,7 +139,7 @@ public class AjaxResult extends HashMap<String, Object> {
      * @return 错误消息
      */
     public static AjaxResult error(String msg, Object data) {
-        return new AjaxResult(HttpStatus.ERROR, msg, data);
+        return new AjaxResult(HttpStatus.INTERNAL_SERVER_ERROR, msg, data);
     }
 
     /**
@@ -149,8 +149,8 @@ public class AjaxResult extends HashMap<String, Object> {
      * @param msg  消息内容
      * @return 错误消息
      */
-    public static AjaxResult error(Integer code, String msg) {
-        return new AjaxResult(code, msg);
+    public static AjaxResult error(org.springframework.http.HttpStatus code, String msg) {
+        return new AjaxResult(code, msg, null);
     }
 
 }

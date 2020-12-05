@@ -63,11 +63,11 @@ public interface UserMapper {
     /**
      * 重置用户密码
      *
-     * @param no       学工号
+     * @param id       ID
      * @param password 密码
      * @return 结果
      */
-    int resetUserPwd(@Param("no") String no, @Param("password") String password);
+    int resetUserPwd(@Param("id") Long id, @Param("password") String password);
 
     /**
      * 通过用户ID删除用户

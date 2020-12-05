@@ -159,8 +159,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public int resetUserPwd(String no, String password) {
-        return userMapper.resetUserPwd(no, password);
+    public int resetUserPwd(Long id, String password) {
+        return userMapper.resetUserPwd(id, password);
     }
 
     @Override
