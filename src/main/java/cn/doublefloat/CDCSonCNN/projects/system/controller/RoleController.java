@@ -8,6 +8,7 @@ import cn.doublefloat.CDCSonCNN.framework.web.page.TableDataResult;
 import cn.doublefloat.CDCSonCNN.projects.system.domain.Role;
 import cn.doublefloat.CDCSonCNN.projects.system.service.RoleService;
 import io.swagger.annotations.Api;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,7 @@ import java.util.List;
 @Api(tags = "角色接口")
 @RestController
 @RequestMapping("/system/role")
+@Slf4j
 public class RoleController extends BaseController {
 
     @Autowired
@@ -61,6 +63,7 @@ public class RoleController extends BaseController {
      */
     @PostMapping
     public AjaxResult add(@RequestBody Role role) {
+        log.debug(role.toString());
         if (UserConstants.NOT_UNIQUE.equals(roleService.checkRoleNameUnique(role))) {
             return AjaxResult.error("新增角色'" + role.getName() + "'失败，角色名称已存在");
         } else if (UserConstants.NOT_UNIQUE.equals(roleService.checkRoleKeyUnique(role))) {

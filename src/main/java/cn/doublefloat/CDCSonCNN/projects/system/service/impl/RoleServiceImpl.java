@@ -42,7 +42,7 @@ public class RoleServiceImpl implements RoleService {
         Set<String> permsSet = new HashSet<>();
         for (Role perm : perms) {
             if (StringUtils.isNotNull(perm)) {
-                permsSet.addAll(Arrays.asList(perm.getKey().trim().split(",")));
+                permsSet.addAll(Arrays.asList(perm.getRoleKey().trim().split(",")));
             }
         }
         return permsSet;
@@ -76,7 +76,7 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public String checkRoleKeyUnique(Role role) {
         Long roleId = StringUtils.isNull(role.getId()) ? -1L : role.getId();
-        Role info = roleMapper.checkRoleKeyUnique(role.getKey());
+        Role info = roleMapper.checkRoleKeyUnique(role.getRoleKey());
         if (StringUtils.isNotNull(info) && info.getId().longValue() != roleId.longValue()) {
             return UserConstants.NOT_UNIQUE;
         }

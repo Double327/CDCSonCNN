@@ -7,6 +7,7 @@ import cn.doublefloat.CDCSonCNN.framework.web.domain.AjaxResult;
 import cn.doublefloat.CDCSonCNN.projects.system.domain.Menu;
 import cn.doublefloat.CDCSonCNN.projects.system.service.MenuService;
 import io.swagger.annotations.Api;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +21,7 @@ import java.util.List;
 @Api(tags = "菜单接口")
 @RestController
 @RequestMapping("/system/menu")
+@Slf4j
 public class MenuController extends BaseController {
 
     @Autowired
@@ -65,6 +67,7 @@ public class MenuController extends BaseController {
      */
     @PostMapping
     public AjaxResult add(@RequestBody @Validated Menu menu) {
+        log.debug(String.valueOf(menu));
         if (UserConstants.NOT_UNIQUE.equals(menuService.checkMenuNameUnique(menu))) {
             return AjaxResult.error("新增菜单'" + menu.getName() + "'失败，菜单名称已存在");
         }

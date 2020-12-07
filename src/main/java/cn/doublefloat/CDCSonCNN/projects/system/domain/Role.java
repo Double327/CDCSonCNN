@@ -29,7 +29,7 @@ public class Role extends BaseEntity implements Serializable {
     /**
      * 角色权限
      */
-    private String key;
+    private String roleKey;
 
     /**
      * 角色排序

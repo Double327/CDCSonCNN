@@ -141,6 +141,7 @@ public class MenuServiceImpl implements MenuService {
 
     @Override
     public String checkMenuNameUnique(Menu menu) {
+        System.out.println(menu);
         Long menuId = StringUtils.isNull(menu.getId()) ? -1L : menu.getId();
         Menu info = menuMapper.checkMenuNameUnique(menu.getName(), menu.getParentId());
         if (StringUtils.isNotNull(info) && info.getId().longValue() != menuId.longValue()) {
