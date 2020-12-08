@@ -27,17 +27,17 @@ public class CourseController extends BaseController {
         return getTableData(courseService.list(course));
     }
 
-    @PostMapping("/add")
+    @PostMapping
     public AjaxResult add(Course course) {
         return null;
     }
 
-    @DeleteMapping("")
+    @DeleteMapping
     public AjaxResult delete(Long[] ids) {
         return toAjax(courseService.delete(ids));
     }
 
-    @PutMapping("/update")
+    @PutMapping
     public AjaxResult update(Course course) {
         return toAjax(courseService.update(course));
     }

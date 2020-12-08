@@ -23,7 +23,7 @@
     </resultMap>
 
     <sql id="selectCourseVo">
-        SELECT c.id, c.name, c.teacher_id, t.name AS teacher_name, c.assistant_id, a.name AS assistant_name, c.class_hour,  c.credits, c.desc, c.create_by, c.create_time, c.update_by, c.update_time, c.remark
+        SELECT c.id, c.name, c.teacher_id, t.name AS teacher_name, c.assistant_id, a.name AS assistant_name, c.class_hour,  c.credits, c.desc, c.status, c.create_by, c.create_time, c.update_by, c.update_time, c.remark
         FROM tb_course c
         LEFT JOIN tb_user t ON t.id = c.teacher_id
         LEFT JOIN tb_user a ON a.id = c.assistant_id
