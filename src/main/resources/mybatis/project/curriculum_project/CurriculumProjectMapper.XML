@@ -1,12 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.doublefloat.CDCSonCNN.projects.curriculum_project.mapper.CurriculumProjectMapper">
 
+<mapper namespace="cn.doublefloat.CDCSonCNN.projects.curriculum_project.mapper.CurriculumProjectMapper">
     <resultMap type="CurriculumProject" id="CurriculumProjectResult">
         <result property="id" column="id"/>
         <result property="courseId" column="course_id"/>
+        <result property="courseName" column="course_name"/>
         <result property="name" column="name"/>
         <result property="desc" column="desc"/>
         <result property="status" column="status"/>
@@ -23,28 +24,28 @@
     </resultMap>
 
     <sql id="selectCurriculumProjectVo">
-        select id, course_id, name, desc, status, begin_time, end_time, attachment_file_path, create_by, create_time, update_by, update_time, delete_by, delete_time, remark from tb_curriculum_project
+        SELECT cp.id, cp.course_id, c.name AS 'course_name', cp.name, cp.desc, cp.status, cp.begin_time, cp.end_time, cp.attachment_file_path, cp.create_by, cp.create_time, cp.update_by, cp.update_time, cp.delete_by, cp.delete_time, cp.remark
+        FROM tb_curriculum_project cp
+        LEFT JOIN tb_course c ON c.id = cp.course_id
     </sql>
 
     <select id="selectCurriculumProjectList" parameterType="CurriculumProject" resultMap="CurriculumProjectResult">
         <include refid="selectCurriculumProjectVo"/>
         <where>
-            <if test="name != null  and name != ''">and name like concat('%', #{name}, '%')</if>
-            <if test="desc != null  and desc != ''">and desc = #{desc}</if>
-            <if test="status != null  and status != ''">and status = #{status}</if>
-            <if test="beginTime != null ">and begin_time = #{beginTime}</if>
-            <if test="endTime != null ">and end_time = #{endTime}</if>
-            <if test="attachmentFilePath != null  and attachmentFilePath != ''">and attachment_file_path =
+            <if test="name != null  and name != ''">and cp.name like concat('%', #{name}, '%')</if>
+            <if test="desc != null  and desc != ''">and cp.desc = #{desc}</if>
+            <if test="status != null  and status != ''">and cp.status = #{status}</if>
+            <if test="beginTime != null ">and cp.begin_time = #{beginTime}</if>
+            <if test="endTime != null ">and cp.end_time = #{endTime}</if>
+            <if test="attachmentFilePath != null  and attachmentFilePath != ''">and cp.attachment_file_path =
                 #{attachmentFilePath}
             </if>
-            <if test="deleteBy != null ">and delete_by = #{deleteBy}</if>
-            <if test="deleteTime != null ">and delete_time = #{deleteTime}</if>
         </where>
     </select>
 
     <select id="selectCurriculumProjectById" parameterType="Long" resultMap="CurriculumProjectResult">
         <include refid="selectCurriculumProjectVo"/>
-        where id = #{id}
+        where cp.id = #{id}
     </select>
 
     <update id="updateCurriculumProject" parameterType="CurriculumProject">
@@ -107,5 +108,4 @@
             #{id}
         </foreach>
     </delete>
-
 </mapper>

@@ -1,5 +1,6 @@
 package cn.doublefloat.CDCSonCNN.framework.web.exception;
 
+import cn.doublefloat.CDCSonCNN.common.exception.CustomException;
 import cn.doublefloat.CDCSonCNN.common.exception.user.*;
 import cn.doublefloat.CDCSonCNN.framework.web.domain.AjaxResult;
 import org.slf4j.Logger;
@@ -52,6 +53,12 @@ public class GlobalExceptionHandle {
     public AjaxResult handlerUserPasswordNotMatchException(UserPasswordNotMatchException e) {
         System.out.println("UserPasswordNotMatch错误");
         log.error(e.getMessage(), e);
+        return AjaxResult.error(e.getMessage());
+    }
+
+    @ExceptionHandler(CustomException.class)
+    public AjaxResult handleCustomException(CustomException e) {
+        log.error(e.getMessage());
         return AjaxResult.error(e.getMessage());
     }
 }

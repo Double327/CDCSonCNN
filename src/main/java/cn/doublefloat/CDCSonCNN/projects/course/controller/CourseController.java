@@ -1,5 +1,6 @@
 package cn.doublefloat.CDCSonCNN.projects.course.controller;
 
+import cn.doublefloat.CDCSonCNN.common.utils.SecurityUtils;
 import cn.doublefloat.CDCSonCNN.common.utils.ServletUtils;
 import cn.doublefloat.CDCSonCNN.framework.web.controller.BaseController;
 import cn.doublefloat.CDCSonCNN.framework.web.domain.AjaxResult;
@@ -28,22 +29,25 @@ public class CourseController extends BaseController {
     }
 
     @PostMapping
-    public AjaxResult add(Course course) {
-        return null;
+    public AjaxResult add(@RequestBody Course course) {
+        course.setCreateBy(SecurityUtils.getUserId());
+        return toAjax(courseService.add(course));
     }
 
-    @DeleteMapping
-    public AjaxResult delete(Long[] ids) {
+    @DeleteMapping("/{ids}")
+    public AjaxResult delete(@PathVariable Long[] ids) {
         return toAjax(courseService.delete(ids));
     }
 
     @PutMapping
-    public AjaxResult update(Course course) {
+    public AjaxResult update(@RequestBody Course course) {
+        course.setUpdateBy(SecurityUtils.getUserId());
         return toAjax(courseService.update(course));
     }
 
     @PutMapping("/changeStatus")
-    public AjaxResult changeStatus(Course course) {
+    public AjaxResult changeStatus(@RequestBody Course course) {
+        course.setUpdateBy(SecurityUtils.getUserId());
         return toAjax(courseService.changeStatus(course));
     }
 }

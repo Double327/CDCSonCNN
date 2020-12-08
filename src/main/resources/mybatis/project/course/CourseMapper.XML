@@ -31,14 +31,14 @@
 
     <select id="findCourseById" parameterType="Long" resultMap="CourseResult">
         <include refid="selectCourseVo"/>
-        WHERE c.id = #{id}
+        WHERE c.id = #{id} AND c.status != 3
     </select>
 
     <select id="findCourseList" parameterType="Course" resultMap="CourseResult">
         <include refid="selectCourseVo"/>
-        WHERE 1 = 1
+        WHERE c.status != 3
         <if test="name != null and name != ''">
-            AND name LIKE concat('%', #{name}, '%')
+            AND c.name LIKE concat('%', #{name}, '%')
         </if>
         <if test="teacherId != null and teacherId != ''">
             AND c.teacher_id = #{teacherId}
@@ -122,6 +122,7 @@
         <if test="credits != null and credits != ''">
             credits = #{credits},
         </if>
+        <if test="status != null and status != ''">status = #{status},</if>
         <if test="remark != null and remark != ''">
             remark = #{remark},
         </if>

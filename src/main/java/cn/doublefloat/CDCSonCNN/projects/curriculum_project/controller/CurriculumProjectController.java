@@ -12,13 +12,7 @@ import cn.doublefloat.CDCSonCNN.projects.curriculum_project.domain.CurriculumPro
 import cn.doublefloat.CDCSonCNN.projects.curriculum_project.service.CurriculumProjectService;
 import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * 课题Controller
@@ -66,8 +60,8 @@ public class CurriculumProjectController extends BaseController {
      * 新增课题
      */
     @PostMapping
-    public AjaxResult add(CurriculumProject curriculumProject) {
-//        curriculumProject.setCreateBy(SecurityUtils.getUserId());
+    public AjaxResult add(@RequestBody CurriculumProject curriculumProject) {
+        curriculumProject.setCreateBy(SecurityUtils.getUserId());
         curriculumProject.setCreateBy(1L);
         return toAjax(CurriculumProjectService.insertCurriculumProject(curriculumProject));
     }
@@ -76,7 +70,7 @@ public class CurriculumProjectController extends BaseController {
      * 修改课题
      */
     @PutMapping
-    public AjaxResult edit(CurriculumProject curriculumProject) {
+    public AjaxResult edit(@RequestBody CurriculumProject curriculumProject) {
         return toAjax(CurriculumProjectService.updateCurriculumProject(curriculumProject));
     }
 
