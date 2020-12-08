@@ -77,7 +77,7 @@ public class User extends BaseEntity implements Serializable {
     /**
      * 出生日期
      */
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date birth;
 
     /**

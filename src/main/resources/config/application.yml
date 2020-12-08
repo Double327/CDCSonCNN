@@ -67,7 +67,9 @@ spring:
             multi-statement-allow: true
   profiles:
     active: dev
-
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
 
 mybatis:
   typeAliasesPackage: cn.doublefloat.CDCSonCNN.projects.**.domain
